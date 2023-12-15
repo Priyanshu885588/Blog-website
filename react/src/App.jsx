@@ -5,6 +5,7 @@ import { BlogPostForm } from "./components/BlogPost/BlogPostForm";
 import { BlogPostList } from "./components/BlogPost/BlogsPage/BlogPostList";
 import { Home } from "./components/Home/Home";
 import Navbar from "./components/Navbar/Navbar";
+import DarkModeToggle from './components/UI/DarkModeToggle'
 
 function App() {
   const [isNavbarVisible, setNavbarVisibility] = useState(false);
@@ -20,6 +21,7 @@ function App() {
       >
         {isNavbarVisible ? "◲" : "◰"}
       </button>
+      <DarkModeToggle />
       {isNavbarVisible && <Navbar onClose={toggleNavbar}/>}
       <Routes>
         <Route path="/" element={<Home />} />

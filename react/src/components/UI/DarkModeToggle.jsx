@@ -1,3 +1,4 @@
+import React from 'react';
 import { useEffect, useState } from 'react';
 
 const DarkModeToggle = () => {
@@ -9,17 +10,18 @@ const DarkModeToggle = () => {
 
   useEffect(() => {
     // Apply dark mode to the entire document
+    console.log(11);
     document.documentElement.classList.toggle('dark', isDarkMode);
   }, [isDarkMode]);
 
   return (
     <button
-      className="text-black dark:text-white bg-gray-200 dark:bg-gray-800 p-2 rounded"
+      className="text-black dark:text-white bg-gray-900 dark:bg-gray-500 p- rounded-full absolute top-3 right-2"
       onClick={toggleDarkMode}
     >
-      {isDarkMode ? 'Light Mode' : 'Dark Mode'}
+      {isDarkMode ? '🌞' : '🌙'}
     </button>
   );
 };
 
-export default DarkModeToggle;
+export default React.memo(DarkModeToggle);
