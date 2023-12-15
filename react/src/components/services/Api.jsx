@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/api/v1/posts"; // Adjust the URL based on your backend server
+const API_URL = "https://blog-website-iota-liart.vercel.app/api/v1/posts"; // Adjust the URL based on your backend server
 
 export const getAllPosts = async () => {
   const response = await axios.get(API_URL);
