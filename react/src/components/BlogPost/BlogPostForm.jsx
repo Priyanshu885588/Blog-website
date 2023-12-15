@@ -41,8 +41,8 @@ export const BlogPostForm = () => {
   });
 
   return (
-    <>
-      <h1 className="text-center montserrat uppercase text-xl mb-8 text-black dark:text-gray-400 mt-4">
+    <div className="bg-white dark:bg-black h-screen ">
+      <h1 className="text-center montserrat uppercase text-xl mb-8 text-black dark:text-gray-400 pt-4">
         Publish your blog here
       </h1>
       <form className="w-2/3 mx-auto" onSubmit={handleSubmit}>
@@ -161,6 +161,6 @@ export const BlogPostForm = () => {
           Reset
         </button>
       </form>
-    </>
+    </div>
   );
 };

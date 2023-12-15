@@ -16,7 +16,7 @@ function App() {
     <Router>
       <button
         onClick={toggleNavbar}
-        className="text-black dark:text-white fixed z-20 p-1 top-1 text-3xl opacity-50 bg-transparent transition-all duration-500 ease-in-out "
+        className="text-black dark:text-white fixed z-20 p-1 top-1 text-3xl abg-transparent transition-all duration-500 ease-in-out "
       >
         {isNavbarVisible ? "◲" : "◰"}
       </button>

@@ -83,7 +83,7 @@ export const BlogPostList = () => {
           <p className="entry-animation border-b-2 text-3xl  text-white"></p>
         </div>
       )}
-      <div className="text-black dark:text-white flex justify-center text-center mt-7 md:mt-0">
+      <div className="text-black dark:text-white flex justify-center text-center mt-7 bg-white dark:bg-black md:mt-0">
         <div className="w-full overflow-y-auto flex flex-wrap gap-2 justify-center mt-5 mb-5">
           {posts.map((post) => (
             <Blogpost
