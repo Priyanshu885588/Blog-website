@@ -19,7 +19,13 @@ app.use(express.json());
 
 app.use("/api/v1/posts", posts);//used to mount the routes to the specified path
 
-const port = 3000;
+const port = process.env.port || 3000;
+
+if(process.env.NODE_ENV == "production"){
+  app.use(express.static("react/dist"));
+  
+}
+
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URI);
