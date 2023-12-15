@@ -2,7 +2,7 @@ import React from "react";
 
 export const SingleBlog = ({ singlePost, handleSingleblog }) => {
   return (
-    <div className="bg-gray-900 text-3xl absolute w-full md:h-full entry-animation1 flex flex-col gap-3 justify-center items-center z-50">
+    <div className="bg-gray-900 text-3xl absolute w-full h-screen md:h-full entry-animation1 flex flex-col gap-3 justify-center items-center z-50">
       <p
         className=" text-gray-900 dark:text-gray-700 cursor-pointer hover:dark:text-white text-3xl "
         onClick={handleSingleblog}
