@@ -38,19 +38,19 @@ export const SingleBlog = ({ singlePost, handleSingleblog }) => {
             id="tags"
             className="text-xs font-extralight text-gray-700 dark:text-gray-500 italic pt-1 text-center"
           >
-            #{singlePost.post.tags}
+            #{singlePost.post.tags.join("#")}
           </p>
           <p
             id="publishDate"
             className="text-xs font-extralight text-gray-700 dark:text-gray-500 italic pt-1 text-center"
           >
-            published: {singlePost.post.publishDate}
+            published: {singlePost.post.publishDate.substring(0,10)}
           </p>
           <p
             id="updatedAt"
             className="text-xs font-extralight text-gray-700 dark:text-gray-500 italic pt-1 text-center"
           >
-            updated: {singlePost.post.updatedAt}
+            updated: {singlePost.post.updatedAt.substring(0,10)}
           </p>
         </div>
       </div>

@@ -12,6 +12,7 @@ const DarkModeToggle = () => {
     // Apply dark mode to the entire document
     console.log(11);
     document.documentElement.classList.toggle('dark', isDarkMode);
+    document.body.classList.toggle('dark', isDarkMode);
   }, [isDarkMode]);
 
   return (

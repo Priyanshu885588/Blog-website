@@ -33,6 +33,7 @@ export const BlogPostForm = () => {
       console.log([updatedValues]);
       try {
         const createdPost = await createPost([updatedValues]);
+        handleReset()
         navigate('/blogs');
       } catch (error) {
         console.error('Error creating post:', error);

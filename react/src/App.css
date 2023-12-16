@@ -1,7 +1,11 @@
 body {
   width: 100vw;
-  background-color: transparent; /* Default background color for light mode */
+   /* Default background color for light mode */
   overflow-x: hidden;
+}
+
+.dark {
+  background-color: #1a202c; /* Set the background color for dark mode */ /* Set the text color for dark mode */
 }
 
 .entry-animation {
