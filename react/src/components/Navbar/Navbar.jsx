@@ -11,7 +11,7 @@ const Navbar = React.memo (({ onClose }) => {
   };
 
   return (
-    <nav className="w-screen md:w-36 lato h-screen left-0 top-0 flex flex-col gap-6 items-center flex-wrap justify-center z-10 fixed dark:bg-gray-900 bg-slate-300 transition-all duration-500 ease-in-out">
+    <nav className="w-screen md:w-36 lato h-screen left-0 top-0 flex flex-col gap-6 items-center flex-wrap justify-center z-30 fixed dark:bg-gray-900 bg-slate-300 transition-all duration-500 ease-in-out">
       <Link
         to="/"
         className="dark:text-white hover:text-gray-400 hover:dark:text-gray-600 text-black w-full text-center"

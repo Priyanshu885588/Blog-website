@@ -1,23 +1,29 @@
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const DarkModeToggle = () => {
-  const [isDarkMode, setDarkMode] = useState(false);
+  const [isDarkMode, setDarkMode] = useState(() => {
+    // Initialize from local storage or default to false (light mode)
+    return JSON.parse(localStorage.getItem('isDarkMode')) || false;
+  });
 
   const toggleDarkMode = () => {
-    setDarkMode((prevMode) => !prevMode);
+    setDarkMode((prevMode) => {
+      const newMode = !prevMode;
+      // Save the theme preference to local storage
+      localStorage.setItem('isDarkMode', JSON.stringify(newMode));
+      return newMode;
+    });
   };
 
   useEffect(() => {
-    // Apply dark mode to the entire document
-    console.log(11);
+    // Update the classList when isDarkMode changes
     document.documentElement.classList.toggle('dark', isDarkMode);
     document.body.classList.toggle('dark', isDarkMode);
   }, [isDarkMode]);
 
   return (
     <button
-      className="text-black dark:text-white bg-gray-900 dark:bg-gray-500 p-1 rounded-full fixed left-8 top-4 text-xs z-20"
+      className="text-black dark:text-white bg-gray-900 dark:bg-gray-500 p-1 rounded-full fixed left-10 top-3 text-xs z-40"
       onClick={toggleDarkMode}
     >
       {isDarkMode ? '🌞' : '🌙'}
