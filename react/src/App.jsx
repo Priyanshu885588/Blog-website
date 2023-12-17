@@ -16,14 +16,14 @@ function App() {
   };
   return (
     <Router>
-      <div className="w-screen bg-white dark:bg-black z-20 h-10 fixed"></div>
+      <div className="w-screen bg-gray-50 dark:bg-black z-20 h-10 fixed"></div>
       <button
         onClick={toggleNavbar}
         className="text-black dark:text-white fixed z-40 p-1 top-1 text-3xl bg-transparent transition-all duration-500 ease-in-out "
       >
         <Hamburgerblack />
       </button>
-      {isNavbarVisible && <DarkModeToggle />}
+      <DarkModeToggle />
       {isNavbarVisible && <Navbar onClose={toggleNavbar} />}
       <Routes>
         <Route path="/" element={<Home />} />
