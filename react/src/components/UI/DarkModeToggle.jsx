@@ -23,10 +23,10 @@ const DarkModeToggle = () => {
 
   return (
     <button
-      className="text-black dark:text-white bg-gray-900 dark:bg-gray-500 p-1 rounded-full fixed left-10 top-3 text-xs z-40"
+      className="text-black dark:text-white bg-gray-100 dark:bg-gray-500 p-1 rounded-lg fixed left-10 top-3 text-xs z-40"
       onClick={toggleDarkMode}
     >
-      {isDarkMode ? '🌞' : '🌙'}
+      {isDarkMode ? 'Light' : 'Dark'}
     </button>
   );
 };
