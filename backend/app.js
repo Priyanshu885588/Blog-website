@@ -4,6 +4,7 @@ const cors = require('cors');
 const app = express();
 const posts = require("./routes/postRoutes");
 const userRoutes = require('./routes/userRoutes');
+const cookieParser = require('cookie-parser')
 
 const {notFound,errorHandler} = require('./middleware/errorMiddleware')
 
@@ -22,6 +23,8 @@ The express.json() middleware is responsible for parsing this JSON data and popu
 with the parsed data.*/
 app.use(express.json()); 
 app.use(express.urlencoded({extended:true}))
+
+app.use(cookieParser())
 
 app.use("/api/users",userRoutes)
 app.use(notFound)
