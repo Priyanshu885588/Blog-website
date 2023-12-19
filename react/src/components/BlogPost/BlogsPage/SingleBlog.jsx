@@ -2,7 +2,7 @@ import React from "react";
 
 export const SingleBlog = ({ singlePost, handleSingleblog }) => {
   return (
-    <div className="bg-gray-100 dark:bg-gray-900 text-3xl absolute w-full h-screen md:h-full entry-animation1 flex flex-col gap-3 justify-center items-center z-50">
+    <div className="bg-gray-100 dark:bg-gray-900 text-3xl absolute w-full h-auto md:h-full entry-animation1 flex flex-col gap-3 justify-center items-center z-50">
       <p
         className=" text-gray-900 dark:text-gray-700 cursor-pointer hover:text-gray-400 hover:dark:text-white text-3xl "
         onClick={handleSingleblog}
@@ -33,12 +33,12 @@ export const SingleBlog = ({ singlePost, handleSingleblog }) => {
             {singlePost.post.content}
           </p>
         </div>
-        <div>
+        <div className="w-full flex flex-col justify-center items-center">
           <p
             id="tags"
-            className="text-xs font-extralight text-gray-700 dark:text-gray-500 italic pt-1 text-center"
+            className="text-xs font-extralight text-gray-700 dark:text-gray-500 italic pt-1 text-center w-2/3 h-1/3 overflow-auto"
           >
-            #{singlePost.post.tags.join("#")}
+            #{singlePost.post.tags.join(" ")}
           </p>
           <p
             id="publishDate"

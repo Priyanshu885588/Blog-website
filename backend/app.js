@@ -3,11 +3,16 @@ const connectDB = require("./db/db");
 const cors = require('cors');
 const app = express();
 const posts = require("./routes/postRoutes");
+const userRoutes = require('./routes/userRoutes');
+
+const {notFound,errorHandler} = require('./middleware/errorMiddleware')
+
 require("dotenv").config();
+
 
 app.use(cors());
 
-app.get("/hello", (req, res) => {
+app.get("/", (req, res) => {
   res.send("this the blog website");
 });
 
@@ -16,7 +21,11 @@ When a client sends data to the server using the HTTP request body, the data is 
 The express.json() middleware is responsible for parsing this JSON data and populating the req.body object 
 with the parsed data.*/
 app.use(express.json()); 
+app.use(express.urlencoded({extended:true}))
 
+app.use("/api/users",userRoutes)
+app.use(notFound)
+app.use(errorHandler)
 app.use("/api/v1/posts", posts);//used to mount the routes to the specified path
 
 const port = process.env.port || 3000;

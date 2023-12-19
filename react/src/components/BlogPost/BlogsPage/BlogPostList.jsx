@@ -30,14 +30,10 @@ export const BlogPostList = () => {
         const sortedPosts = data.posts.sort((a, b) => {
           const dateA = new Date(a.updatedAt);
           const dateB = new Date(b.updatedAt);
-
-          // Check if the parsed dates are valid
           if (isNaN(dateA) || isNaN(dateB)) {
             console.error("Invalid date format");
-            return 0; // Do not change the order if dates are invalid
+            return 0; 
           }
-
-          // Sort in descending order (newest first)
           return dateB - dateA;
         });
 

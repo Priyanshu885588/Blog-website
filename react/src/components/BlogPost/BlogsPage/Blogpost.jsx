@@ -7,7 +7,7 @@ export const Blogpost = ({ post,handleSingleblog }) => {
     <div
       onClick={()=>handleSingleblog(post._id)}
       key={post._id} // Assuming each post has a unique identifier like 'id'
-      className="block w-11/12 md:w-1/2 p-6 bg-white border border-gray-200 rounded-2xl shadow hover:bg-gray-100 dark:bg-transparent dark:border-gray-700 dark:hover:bg-gray-800 cursor-pointer transition-all duration-500 ease-in-out"
+      className="w-11/12 md:w-1/2 p-6 bg-white border border-gray-200 rounded-2xl shadow hover:bg-gray-100 dark:bg-transparent dark:border-gray-700 dark:hover:bg-gray-800 cursor-pointer transition-all duration-500 ease-in-out flex flex-col justify-center items-center"
     >
       <h5
         id="title"
@@ -29,9 +29,9 @@ export const Blogpost = ({ post,handleSingleblog }) => {
       </p>
       <p
         id="tags"
-        className="text-xs font-extralight text-gray-700 dark:text-gray-500 italic pt-1 text-center"
+        className="text-xs font-extralight text-gray-700 dark:text-gray-500 italic pt-1 text-center w-1/2 h-5 overflow-hidden"
       >
-        #{post.tags.join("#")} {/* Assuming 'tags' is an array */}
+        #{post.tags.join(" ")} {/* Assuming 'tags' is an array */}
       </p>
       <p
         id="publishDate"
