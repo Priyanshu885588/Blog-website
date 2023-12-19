@@ -27,16 +27,11 @@ app.use(express.urlencoded({extended:true}))
 app.use(cookieParser())
 
 app.use("/api/users",userRoutes)
-// app.use(notFound)
-app.use(errorHandler)
 app.use("/api/v1/posts", posts);//used to mount the routes to the specified path
+app.use(notFound)
+app.use(errorHandler)
 
 const port = 3000;
-
-// if(process.env.NODE_ENV == "production"){
-//   app.use(express.static("react/dist"));
-  
-// }
 
 const start = async () => {
   try {
