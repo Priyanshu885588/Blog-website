@@ -14,7 +14,8 @@ export const BlogPostList = () => {
   const handleSingleblog = async (post_id) => {
     try {
       if (!singleBlog) {
-        const data = await getPostById(post_id);
+        const data = posts.find(post => post._id === post_id);
+        console.log(data);
         setSinglePost(data);
       }
       setSingleBlog((preVisible) => !preVisible);

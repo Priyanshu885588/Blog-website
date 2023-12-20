@@ -23,7 +23,7 @@ function App() {
       >
         <Hamburgerblack />
       </button>
-      {isNavbarVisible && <DarkModeToggle />}
+      <DarkModeToggle />
       {isNavbarVisible && <Navbar onClose={toggleNavbar} />}
       <Routes>
         <Route path="/" element={<Home />} />

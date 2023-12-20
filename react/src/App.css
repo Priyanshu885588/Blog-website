@@ -1,28 +1,12 @@
 body {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
    /* Default background color for light mode */
   overflow-x: hidden;
 }
 
 .dark {
   background-color: #1a202c; /* Set the background color for dark mode */ /* Set the text color for dark mode */
-}
-
-.entry-animation {
-  animation: entry 3s infinite normal;
-  
-}
-
-@keyframes entry {
-  0% {
-    /* text-align: left; */
-    width: 0;
-  }
-  100% {
-    width: 100%;
-  }
-
 }
 
 .entry-animation1 {
