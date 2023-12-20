@@ -1,6 +1,18 @@
 import React from "react";
+import { useState } from "react";
 
 export const SingleBlog = ({ singlePost, handleSingleblog }) => {
+
+  const [showTagsAndDate,setTagsAndDate]=useState('hidden');
+  const readmore = () =>{
+    if(showTagsAndDate==='hidden'){
+      setTagsAndDate('flex')
+    }
+    else{
+      setTagsAndDate('hidden')
+    }
+  }
+
   return (
     <div className="bg-gray-100 dark:bg-gray-900 text-3xl absolute w-full min-h-screen entry-animation1 flex flex-col gap-3 justify-center items-center z-50">
       <p
@@ -11,9 +23,9 @@ export const SingleBlog = ({ singlePost, handleSingleblog }) => {
       </p>
       <div
         key={singlePost._id} // Assuming each post has a unique identifier like 'id'
-        className="w-11/12 md:w-1/2 h-5/6 p-6 bg-white border border-gray-200 rounded-2xl shadow dark:bg-transparent dark:border-gray-700 flex flex-col items-center justify-between"
+        className="w-11/12 md:w-1/2 h-80 p-6 bg-white border box-shadow border-gray-200 rounded-2xl dark:bg-transparent dark:border-gray-700 flex flex-col items-center justify-between "
       >
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center justify-center overflow-auto">
           <h5
             id="title"
             className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white capitalize"
@@ -22,21 +34,23 @@ export const SingleBlog = ({ singlePost, handleSingleblog }) => {
           </h5>
           <p
             id="author"
-            className="text-gray-700 dark:text-gray-300 playfair uppercase mb-1"
+            className="text-gray-700 dark:text-gray-300 playfair text-xl text-center uppercase mb-1"
           >
             ~ {singlePost.author}
           </p>
           <p
             id="content"
-            className="font-thin text-gray-700 dark:text-gray-400 quicksand p-1 text-sm md:text-base text-left overflow-auto"
+            className="font-thin text-gray-700 h-full dark:text-gray-400 quicksand p-1 text-sm md:text-base text-center overflow-auto"
           >
             {singlePost.content}
           </p>
         </div>
-        <div className="w-full flex flex-col justify-center items-center">
+      </div>
+      <p className={`loto text-xs font-extralight text-gray-700 dark:text-gray-500 italic cursor-pointer`} onClick={readmore}>Read More</p>
+        <div className={`w-1/2 ${showTagsAndDate} flex-col justify-center items-center bg-transparent`}>
           <p
             id="tags"
-            className="text-xs font-extralight text-gray-700 dark:text-gray-500 italic pt-1 text-center w-2/3 h-16 overflow-auto"
+            className="text-xs font-extralight text-gray-700 dark:text-gray-500 italic pt-1 text-center"
           >
             #{singlePost.tags.join(" ")}
           </p>
@@ -53,7 +67,6 @@ export const SingleBlog = ({ singlePost, handleSingleblog }) => {
             updated: {singlePost.updatedAt.substring(0,10)}
           </p>
         </div>
-      </div>
     </div>
   );
 };

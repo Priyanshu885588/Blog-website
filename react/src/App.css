@@ -9,6 +9,10 @@ body {
   background-color: #1a202c; /* Set the background color for dark mode */ /* Set the text color for dark mode */
 }
 
+.box-shadow{
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.482);
+}
+
 .entry-animation1 {
   animation: entry1 0.7s;
   
