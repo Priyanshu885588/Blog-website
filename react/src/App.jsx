@@ -1,30 +1,14 @@
 import "./App.css";
-import { useState } from "react";
 import { Routes, Route, BrowserRouter as Router } from "react-router-dom";
 import { BlogPostForm } from "./components/BlogPost/BlogPostForm";
 import { BlogPostList } from "./components/BlogPost/BlogsPage/BlogPostList";
 import { Home } from "./components/Home/Home";
-import Navbar from "./components/Navbar/Navbar";
-import DarkModeToggle from "./components/UI/DarkModeToggle";
-import { Hamburgerblack } from "./assets/Hamburgerblack";
+import { HorizontalNavbar } from "./components/Navbar/HorizontalNavbar";
 
 function App() {
-  const [isNavbarVisible, setNavbarVisibility] = useState(false);
-
-  const toggleNavbar = () => {
-    setNavbarVisibility((prevVisibility) => !prevVisibility);
-  };
   return (
     <Router>
-      <div className="w-screen bg-gray-100 dark:bg-gray-900 z-20 h-11 fixed md:hidden"></div>
-      <button
-        onClick={toggleNavbar}
-        className="text-black dark:text-white fixed z-40 p-1 top-1 text-3xl bg-transparent transition-all duration-500 ease-in-out "
-      >
-        <Hamburgerblack />
-      </button>
-      <DarkModeToggle />
-      {isNavbarVisible && <Navbar onClose={toggleNavbar} />}
+      <HorizontalNavbar/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/blogs" element={<BlogPostList />} />

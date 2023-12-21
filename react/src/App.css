@@ -6,11 +6,27 @@ body {
 }
 
 .dark {
-  background-color: #1a202c; /* Set the background color for dark mode */ /* Set the text color for dark mode */
+  background-color: #000000; /* Set the background color for dark mode */ /* Set the text color for dark mode */
 }
 
 .box-shadow{
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.482);
+}
+
+.entry-animation {
+  animation: entry 0.7s;
+  
+}
+
+@keyframes entry {
+  0% {
+    /* text-align: left; */
+    left: -10%;
+  }
+  100% {
+    left: 0;
+  }
+
 }
 
 .entry-animation1 {
@@ -27,6 +43,10 @@ body {
     right: 0;
   }
 
+}
+
+.light-border{
+  border: 1px solid gray;
 }
 
 

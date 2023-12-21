@@ -14,7 +14,7 @@ export const SingleBlog = ({ singlePost, handleSingleblog }) => {
   }
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-900 text-3xl absolute w-full min-h-screen entry-animation1 flex flex-col gap-3 justify-center items-center z-50">
+    <div className="bg-gray-100 dark:bg-black text-3xl absolute w-full min-h-screen entry-animation1 top-0 flex flex-col pt-5 gap-3 justify-start items-center z-50">
       <p
         className=" text-gray-900 dark:text-gray-700 cursor-pointer hover:text-gray-400 hover:dark:text-white text-3xl "
         onClick={handleSingleblog}

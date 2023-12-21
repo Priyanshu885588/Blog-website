@@ -87,8 +87,8 @@ export const BlogPostList = () => {
   }
   return (
     <>
-      <div className="text-black dark:text-white flex justify-center text-center pt-7 bg-white dark:bg-black md:mt-0">
-        <div className="w-full overflow-y-auto flex flex-wrap gap-2 justify-center mt-5 mb-5">
+      <div className="text-black dark:text-white flex justify-center text-center bg-white dark:bg-black md:mt-0">
+        <div className="w-full overflow-y-auto flex flex-wrap gap-2 justify-center mb-5">
           {posts.map((post) => (
             <Blogpost
               post={post}

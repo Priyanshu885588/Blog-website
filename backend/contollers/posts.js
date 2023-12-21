@@ -3,12 +3,12 @@ const Post = require("../modals/Post");
 let postCache = {
   data: null,
   timestamp: null,
-  expiration: 60, // Cache expires in 60 seconds
+  expiration: 60,
 };
 
 const getAllPosts = async (req, res) => {
   try {
-    const currentTime = new Date().getTime() / 1000; // Convert to seconds
+    const currentTime = new Date().getTime() / 1000;
 
     // Check if the cache is not empty and hasn't expired
     if (postCache.data && currentTime - postCache.timestamp < postCache.expiration) {
