@@ -27,7 +27,6 @@ export const HorizontalNavbar = () => {
 
         <div className="border-l h-full dark:text-white flex justify-center items-center text-black p-2 gap-4 text-lg">
             <Link to="/SignIn" className="quicksand hover:text-gray-500">Sign In</Link>
-            <button className="quicksand hover:text-gray-500">Sign Out</button>
         </div>
 
       </div>

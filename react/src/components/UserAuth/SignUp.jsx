@@ -1,38 +1,52 @@
 import React from "react";
-import { useState } from "react";
-import { useFormik } from "formik";
 import { Link } from "react-router-dom";
-import { signInSchema } from "./schemas";
-import { SignUp } from "./SignUp";
+import { useFormik } from "formik";
+import { signUpSchema } from "./schemas";
 
-export const SignIn = () => {
-  const [signUp, setSignUp] = useState(false);
-  const toggleSignUp = () => {
-    setSignUp((prevVisibility) => !prevVisibility);
-  };
-
+export const SignUp = ({ toggleSignUp }) => {
   const initialValues = {
+    name:"",
     email: "",
     password: "",
+    ConfirmPassword: "",
   };
 
   const { values, errors, touched, handleBlur, handleChange, handleSubmit } =
     useFormik({
       initialValues: initialValues,
-      validationSchema: signInSchema,
+      validationSchema: signUpSchema,
       onSubmit: async (values) => {},
     });
-
-  if (signUp) {
-    return <SignUp toggleSignUp={toggleSignUp} />;
-  }
-
   return (
-    <div className="h-screen absolute w-screen top-0 dark:bg-black bg-white pt-10 z-50 flex flex-col justify-center items-center gap-2">
+    <div className="h-screen absolute w-screen top-0 dark:bg-black bg-white z-50 flex flex-col justify-center items-center gap-2">
       <h1 className="text-black dark:text-gray-100 text-3xl montserrat">
-        Sign In
+        Sign Up
       </h1>
-      <form className="md:w-1/3 w-11/12" onSubmit={handleSubmit}>
+      <form className="md:w-1/3 w-11/12">
+        <div className="mb-5">
+          <label
+            htmlFor="name"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Your name
+          </label>
+          <input
+            type="name"
+            id="name"
+            name="name"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder=""
+            value={values.name}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            
+          />
+          {errors.name && touched.name ? (
+            <p className="text-red-400 opacity-80 mt-1 text-sm">
+              {errors.name}
+            </p>
+          ) : null}
+        </div>
         <div className="mb-5">
           <label
             htmlFor="email"
@@ -41,13 +55,15 @@ export const SignIn = () => {
             Your email
           </label>
           <input
-            name="email"
             id="email"
+            name="email"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder=""
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
+            
+
           />
           {errors.email && touched.email ? (
             <p className="text-red-400 opacity-80 mt-1 text-sm">
@@ -63,18 +79,42 @@ export const SignIn = () => {
             Your password
           </label>
           <input
+            type="password"
             id="password"
             name="password"
-            type="password"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             value={values.password}
             onChange={handleChange}
             onBlur={handleBlur}
+            
 
           />
           {errors.password && touched.password ? (
             <p className="text-red-400 opacity-80 mt-1 text-sm">
               {errors.password}
+            </p>
+          ) : null}
+        </div>
+        <div className="mb-5">
+          <label
+            htmlFor="ConfirmPassword"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Confirm password
+          </label>
+          <input
+            type="ConfirmPassword"
+            id="ConfirmPassword"
+            name="ConfirmPassword"
+            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            value={values.ConfirmPassword}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            autoComplete="off"
+          />
+          {errors.ConfirmPassword && touched.ConfirmPassword ? (
+            <p className="text-red-400 opacity-80 mt-1 text-sm">
+              {errors.ConfirmPassword}
             </p>
           ) : null}
         </div>
@@ -86,12 +126,12 @@ export const SignIn = () => {
         </button>
       </form>
       <p
-        className="text-blue-700 cursor-pointer opacity-70 hover:underline"
+        className="text-blue-700 cursor-pointer opacity-70 hover:underline "
         onClick={toggleSignUp}
       >
-        Don't have an account
+        Alerady have an account
       </p>
-      <Link to="/" className="text-blue-700 opacity-50 hover:underline text-sm">
+      <Link to="/" className="text-blue-700 hover:underline text-sm opacity-50">
         Back to home
       </Link>
     </div>
