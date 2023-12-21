@@ -1,14 +1,36 @@
 const Post = require("../modals/Post");
 
-const getAllPosts = async (req, res) => {
-  try {
-    const posts = await Post.find({});
-    res.status(201).json({ posts });
-  } catch (error) {
-    res.status(500).json({ msg: error });
-  }
+let postCache = {
+  data: null,
+  timestamp: null,
+  expiration: 60, // Cache expires in 60 seconds
 };
 
+const getAllPosts = async (req, res) => {
+  try {
+    const currentTime = new Date().getTime() / 1000; // Convert to seconds
+
+    // Check if the cache is not empty and hasn't expired
+    if (postCache.data && currentTime - postCache.timestamp < postCache.expiration) {
+      console.log("Data retrieved from cache");
+      return res.status(200).json({ posts: postCache.data });
+    }
+
+    // If data is not in the cache or has expired, fetch from the database
+    const posts = await Post.find({});
+
+    // Update the cache with the new data and timestamp
+    postCache = {
+      data: posts,
+      timestamp: currentTime,
+      expiration: 60, // Reset expiration time
+    };
+
+    res.status(200).json({ posts });
+  } catch (error) {
+    res.status(500).json({ error: "Internal Server Error", details: error.message });
+  }
+};
 const getSinglePost = async (req, res) => {
   try {
     const { id: postID } = req.params;

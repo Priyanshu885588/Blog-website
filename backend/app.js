@@ -5,6 +5,7 @@ const app = express();
 const posts = require("./routes/postRoutes");
 const userRoutes = require('./routes/userRoutes');
 const cookieParser = require('cookie-parser')
+const compression = require('compression');
 
 const {notFound,errorHandler} = require('./middleware/errorMiddleware')
 
@@ -12,6 +13,7 @@ require("dotenv").config();
 
 
 app.use(cors());
+app.use(compression());
 
 app.get("/", (req, res) => {
   res.send("this the blog website");
