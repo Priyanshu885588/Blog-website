@@ -6,6 +6,7 @@ import { Home } from "./components/Home/Home";
 import { SignIn } from "./components/UserAuth/SignIn";
 import { HorizontalNavbar } from "./components/Navbar/HorizontalNavbar";
 
+
 function App() {
   return (
     <Router>

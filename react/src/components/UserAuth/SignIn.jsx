@@ -1,12 +1,31 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { signInSchema } from "./Schemas";
 import { SignUp } from "./SignUp";
+import { useDispatch, useSelector } from "react-redux";
+import { useLoginMutation } from "../../slices/usersApiSlice";
+import { setCrendentials } from "../../slices/authSlice";
+import toast, { Toaster } from 'react-hot-toast';
+
 
 export const SignIn = () => {
   const [signUp, setSignUp] = useState(false);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [login, { isLoading }] = useLoginMutation();
+
+  const { userInfo } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate("/");
+    }
+  }, [navigate, userInfo]);
+
   const toggleSignUp = () => {
     setSignUp((prevVisibility) => !prevVisibility);
   };
@@ -20,7 +39,18 @@ export const SignIn = () => {
     useFormik({
       initialValues: initialValues,
       validationSchema: signInSchema,
-      onSubmit: async (values) => {},
+      onSubmit: async (values) => {
+        try {
+          const res = await login({
+            email: values.email,
+            password: values.password,
+          }).unwrap();
+          dispatch(setCrendentials({ ...res }));
+          navigate("/");
+        } catch (err) {
+           toast.error('Invalid username and password');
+        }
+      },
     });
 
   if (signUp) {
@@ -29,6 +59,7 @@ export const SignIn = () => {
 
   return (
     <div className="h-screen absolute w-screen top-0 dark:bg-black bg-white pt-10 z-50 flex flex-col justify-center items-center gap-2">
+      <Toaster />
       <h1 className="text-black dark:text-gray-100 text-3xl montserrat">
         Sign In
       </h1>
@@ -70,7 +101,6 @@ export const SignIn = () => {
             value={values.password}
             onChange={handleChange}
             onBlur={handleBlur}
-
           />
           {errors.password && touched.password ? (
             <p className="text-red-400 opacity-80 mt-1 text-sm">
