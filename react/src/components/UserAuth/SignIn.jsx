@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useFormik } from "formik";
 import { Link } from "react-router-dom";
-import { signInSchema } from "./schemas";
+import { signInSchema } from "./Schemas";
 import { SignUp } from "./SignUp";
 
 export const SignIn = () => {

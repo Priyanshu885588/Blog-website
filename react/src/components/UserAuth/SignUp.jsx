@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
-import { signUpSchema } from "./schemas";
+import { signUpSchema } from "./Schemas";
 
 export const SignUp = ({ toggleSignUp }) => {
   const initialValues = {
