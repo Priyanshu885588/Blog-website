@@ -27,7 +27,7 @@ export const HorizontalNavbar = () => {
           <DarkModeToggle />
         </div>
 
-        <div className="border-l h-full w-20 relative overflow-visible dark:text-white flex justify-center items-center text-black p-2 gap-4 text-lg">
+        <div className="border-l h-full w-30 relative overflow-visible dark:text-white flex justify-center items-center text-black p-2 gap-4 text-lg">
           { userInfo  ? (
             <>
               <Dropdown userInfo={userInfo}/>
