@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import toast, { Toaster } from "react-hot-toast";
 import { setCrendentials } from "../../slices/authSlice";
+import { useUpdateUserMutation } from "../../slices/usersApiSlice";
 import { Loading } from "../UI/Loading";
 export const UserProfile = ({ toggleSignUp }) => {
   const navigate = useNavigate();
@@ -14,7 +15,12 @@ export const UserProfile = ({ toggleSignUp }) => {
 
   const { userInfo } = useSelector((state) => state.auth);
 
-  useEffect(() => {});
+  const [updateProfile, { isLoading }] = useUpdateUserMutation();
+
+  useEffect(() => {
+    values.name = userInfo.name;
+    values.email = userInfo.email;
+  },[userInfo.email,userInfo.name]);
 
   const handleEditing = () => {
     setisEditing((prev) => !prev);
@@ -33,25 +39,28 @@ export const UserProfile = ({ toggleSignUp }) => {
       validationSchema: signUpSchema,
       onSubmit: async (values) => {
         try {
-          const res = await register({
+          const res = await updateProfile({
+            _id: userInfo._id,
             name: values.name,
             email: values.email,
             password: values.password,
           }).unwrap();
-          dispatch(setCrendentials({ ...res }));
-          navigate("/");
+          console.log(res);
+          dispatch(setCrendentials(res))
+          toast.success('Profile updated');
+          setisEditing(false)
         } catch (error) {
-          toast.error(error.data.message);
+          toast.error(error.data.message|| error)
         }
       },
     });
   return (
     <div className="h-screen absolute w-screen top-0 dark:bg-black bg-white z-50 flex flex-col justify-center items-center gap-2">
-      {/* {isLoading && (
+      {isLoading && (
         <div className="absolute top-0 h-screen w-screen">
           <Loading />
         </div>
-      )} */}
+      )}
       <Toaster />
       <h1 className="text-black dark:text-gray-100 text-3xl montserrat">
         PROFILE
@@ -80,6 +89,7 @@ export const UserProfile = ({ toggleSignUp }) => {
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
+            disabled={!isEditing}
           />
           {errors.email && touched.email ? (
             <p className="text-red-400 opacity-80 mt-1 text-sm">
@@ -103,6 +113,7 @@ export const UserProfile = ({ toggleSignUp }) => {
             value={values.name}
             onChange={handleChange}
             onBlur={handleBlur}
+            disabled={!isEditing}
           />
           {errors.name && touched.name ? (
             <p className="text-red-400 opacity-80 mt-1 text-sm">
@@ -143,14 +154,14 @@ export const UserProfile = ({ toggleSignUp }) => {
                 Confirm password
               </label>
               <input
-                type="Password"
+                type="password"
                 id="ConfirmPassword"
                 name="ConfirmPassword"
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-11/12 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 value={values.ConfirmPassword}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                autoComplete="off"
+                autoComplete="new-password"
               />
               {errors.ConfirmPassword && touched.ConfirmPassword ? (
                 <p className="text-red-400 opacity-80 mt-1 text-sm">
@@ -162,7 +173,7 @@ export const UserProfile = ({ toggleSignUp }) => {
               type="submit"
               className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 w-80 basis-full focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
-              Submit
+              Update
             </button>
           </div>
         )}
