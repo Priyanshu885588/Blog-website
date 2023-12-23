@@ -13,6 +13,8 @@ require("dotenv").config();
 
 
 app.use(cors());
+app.use(express.json()); 
+app.use(express.urlencoded({extended:true}))
 app.use(compression());
 
 app.get("/", (req, res) => {
@@ -23,8 +25,6 @@ app.get("/", (req, res) => {
 When a client sends data to the server using the HTTP request body, the data is often sent in JSON format. 
 The express.json() middleware is responsible for parsing this JSON data and populating the req.body object 
 with the parsed data.*/
-app.use(express.json()); 
-app.use(express.urlencoded({extended:true}))
 
 app.use(cookieParser())
 
