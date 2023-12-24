@@ -1,6 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const User = require("../modals/useModel");
 const generateToken = require("../utils/generateToken");
+const Post = require("../modals/Post")
 
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -72,6 +73,12 @@ const updateUserProfile = asyncHandler(async (req, res) => {
       user.password = req.body.password;
     }
     const updatedUser = await user.save();
+
+    await Post.updateMany(
+      { authorId: req.user._id },
+      { $set: { author: req.body.name } }
+    );
+
     res.status(200).json({
       _id: updatedUser._id,
       name: updatedUser.name,

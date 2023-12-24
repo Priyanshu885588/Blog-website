@@ -21,7 +21,6 @@ export const getPostById = async (id) => {
 export const createPost = async (postData) => {
   const jsonString = JSON.stringify(postData);
 
-  console.log(jsonString);
   const response = await axios.post(API_URL, jsonString, {
     headers: {
       "Content-Type": "application/json",
