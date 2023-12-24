@@ -35,6 +35,7 @@ export const userApiSlice = apiSlice.injectEndpoints({
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("userInfo")?.token}`, // Update this to use the token
         },
         body: data,
       }),
