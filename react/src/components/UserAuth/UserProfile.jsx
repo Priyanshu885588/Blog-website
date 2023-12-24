@@ -20,7 +20,7 @@ export const UserProfile = ({ toggleSignUp }) => {
   useEffect(() => {
     values.name = userInfo.name;
     values.email = userInfo.email;
-  },[userInfo.email,userInfo.name]);
+  }, [userInfo.email, userInfo.name]);
 
   const handleEditing = () => {
     setisEditing((prev) => !prev);
@@ -39,18 +39,21 @@ export const UserProfile = ({ toggleSignUp }) => {
       validationSchema: signUpSchema,
       onSubmit: async (values) => {
         try {
-          const res = await updateProfile({
-            _id: userInfo._id,
-            name: values.name,
-            email: values.email,
-            password: values.password,
-          }).unwrap();
-          console.log(res);
-          dispatch(setCrendentials(res))
-          toast.success('Profile updated');
-          setisEditing(false)
+          const token = localStorage.getItem("token");
+          const res = await updateProfile(
+            {
+              _id: userInfo._id,
+              name: values.name,
+              email: values.email,
+              password: values.password,
+              token:token
+            },
+          ).unwrap();
+          dispatch(setCrendentials(res));
+          toast.success("Profile updated");
+          setisEditing(false);
         } catch (error) {
-          toast.error(error.data.message|| error)
+          toast.error(error.data.message || error);
         }
       },
     });
