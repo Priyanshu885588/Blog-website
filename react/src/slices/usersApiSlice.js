@@ -11,7 +11,6 @@ export const userApiSlice = apiSlice.injectEndpoints({
           "Content-Type": "application/json",
         },
         body: data,
-        credentials: 'include',
       }),
     }),
     register: builder.mutation({
@@ -22,7 +21,6 @@ export const userApiSlice = apiSlice.injectEndpoints({
           "Content-Type": "application/json",
         },
         body: data,
-        credentials: 'include',
       }),
     }),
     logout: builder.mutation({
@@ -39,7 +37,6 @@ export const userApiSlice = apiSlice.injectEndpoints({
           "Content-Type": "application/json",
         },
         body: data,
-        credentials: 'include',
       }),
     }),
   }),
