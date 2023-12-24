@@ -13,7 +13,7 @@ require("dotenv").config();
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://blog-website-liart.vercel.app",
     credentials: true,
   })
 );
