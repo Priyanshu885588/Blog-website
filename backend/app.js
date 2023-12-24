@@ -12,10 +12,7 @@ const { notFound, errorHandler } = require("./middleware/errorMiddleware");
 require("dotenv").config();
 
 app.use(
-  cors({
-    origin: "https://blog-website-liart.vercel.app",
-    credentials: true,
-  })
+  cors('*')
 );
 
 app.use(express.json());
