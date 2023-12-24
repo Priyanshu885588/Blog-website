@@ -8,27 +8,13 @@ let postCache = {
 
 const getAllPosts = async (req, res) => {
   try {
-    const currentTime = new Date().getTime() / 1000;
-
-    // Check if the cache is not empty and hasn't expired
-    if (postCache.data && currentTime - postCache.timestamp < postCache.expiration) {
-      console.log("Data retrieved from cache");
-      return res.status(200).json({ posts: postCache.data });
-    }
-
-    // If data is not in the cache or has expired, fetch from the database
     const posts = await Post.find({});
-
-    // Update the cache with the new data and timestamp
-    postCache = {
-      data: posts,
-      timestamp: currentTime,
-      expiration: 60, // Reset expiration time
-    };
 
     res.status(200).json({ posts });
   } catch (error) {
-    res.status(500).json({ error: "Internal Server Error", details: error.message });
+    res
+      .status(500)
+      .json({ error: "Internal Server Error", details: error.message });
   }
 };
 const getSinglePost = async (req, res) => {
@@ -55,13 +41,13 @@ const createPost = async (req, res) => {
 
 const updatePost = async (req, res) => {
   try {
-    const {id:postID}=req.params;
-    const post= await Post.findOneAndUpdate({_id:postID},req.body,{
-      new:true,
-      runValidators:true,
+    const { id: postID } = req.params;
+    const post = await Post.findOneAndUpdate({ _id: postID }, req.body, {
+      new: true,
+      runValidators: true,
     });
-    if(!post){
-      return res.status(404).json({msg:`No task with id:${postID}`})
+    if (!post) {
+      return res.status(404).json({ msg: `No task with id:${postID}` });
     }
 
     res.status(200).json({ id: postID, data: req.body });
