@@ -9,7 +9,7 @@ const generateToken = (res,userId) =>{
     res.cookie('jwt',token,{
         httpOnly:true,//Cookie can only be accessed by the server, not by client-side scripts.
         secure:process.env.NODE_ENV !== 'development',//secure: process.env.NODE_ENV !== 'development': Cookie is only sent over HTTPS, not over unsecured HTTP.
-        sameSite:'None',//sameSite: 'strict': Cookie is only sent in first-party contexts, not with cross-site requests.
+        sameSite:'strict',//sameSite: 'strict': Cookie is only sent in first-party contexts, not with cross-site requests.
         maxAge:30*24*60*60*1000
     })
 }
