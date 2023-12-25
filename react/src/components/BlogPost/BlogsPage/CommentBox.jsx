@@ -5,15 +5,18 @@ export const CommentBox = ({ handleCommentBox }) => {
     <>
       <div className="z-51 h-screen w-screen bg-transparent absolute top-0 left-0 backdrop-blur-md"></div>
       <div className="fixed bottom-2 md:w-1/3 z-51 right-2 w-9/12 overflow-auto h-screen-90 rounded-lg border border-gray-400 flex flex-col justify-center gap-2 items-center bg-gray-100 dark:bg-gray-700">
-        <div className="text-gray-500 flex justify-center w-full p-2 gap-2">
+        <div className="text-gray-500 flex w-full p-2 gap-2 items-center">
           <button
-            className="uppercase text-black dark:text-white self-start"
+            className="uppercase text-black dark:text-white"
             onClick={handleCommentBox}
           >
-            ⇽
+            ✕
           </button>
-          <p className="dark:text-gray-300 text-black">Comment Section</p>
+          <p className="dark:text-gray-300 text-black flex-grow text-center">
+            Comment Section
+          </p>
         </div>
+
         <div className="w-full overflow-auto h-11/12">
           <article class="p-6 text-base bg-gray-100 border-t border-gray-200 dark:border-gray-700 dark:bg-gray-700">
             <footer class="flex justify-between items-center mb-2">
@@ -85,7 +88,10 @@ export const CommentBox = ({ handleCommentBox }) => {
             </p>
           </article>
         </div>
-        <form action="" className="w-full flex gap-1 justify-center items-center">
+        <form
+          action=""
+          className="w-full flex gap-1 justify-center items-center"
+        >
           <label htmlFor="comment" className="w-full m-2">
             <input
               type="text"
