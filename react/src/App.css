@@ -18,6 +18,14 @@ body {
   
 }
 
+.z-51{
+  z-index: 51;
+}
+
+.h-screen-90{
+  height: 90vh;
+}
+
 @keyframes entry {
   0% {
     /* text-align: left; */

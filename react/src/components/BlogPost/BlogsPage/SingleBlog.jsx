@@ -1,20 +1,20 @@
 import React from "react";
 import { useState } from "react";
+import { Comments } from "./Comments";
+import { Likes } from "./Likes";
 
 export const SingleBlog = ({ singlePost, handleSingleblog }) => {
-
-  const [showTagsAndDate,setTagsAndDate]=useState('hidden');
-  const readmore = () =>{
-    if(showTagsAndDate==='hidden'){
-      setTagsAndDate('flex')
+  const [showTagsAndDate, setTagsAndDate] = useState("hidden");
+  const readmore = () => {
+    if (showTagsAndDate === "hidden") {
+      setTagsAndDate("flex");
+    } else {
+      setTagsAndDate("hidden");
     }
-    else{
-      setTagsAndDate('hidden')
-    }
-  }
+  };
 
   return (
-    <div className="bg-gray-100 dark:bg-black text-3xl absolute w-full min-h-screen entry-animation1 top-0 flex flex-col pt-5 gap-3 justify-start items-center z-50">
+    <div key={singlePost._id} className="bg-gray-100 dark:bg-black text-3xl absolute w-full min-h-screen entry-animation1 top-0 flex flex-col pt-5 gap-3 justify-start items-center z-50">
       <p
         className=" text-gray-900 dark:text-gray-700 cursor-pointer hover:text-gray-400 hover:dark:text-white text-3xl "
         onClick={handleSingleblog}
@@ -46,27 +46,38 @@ export const SingleBlog = ({ singlePost, handleSingleblog }) => {
           </p>
         </div>
       </div>
-      <p className={`loto text-xs font-extralight text-gray-700 dark:text-gray-500 italic cursor-pointer`} onClick={readmore}>Read More</p>
-        <div className={`w-1/2 ${showTagsAndDate} flex-col justify-center items-center bg-transparent`}>
-          <p
-            id="tags"
-            className="text-xs font-extralight text-gray-700 dark:text-gray-500 italic pt-1 text-center"
-          >
-            #{singlePost.tags.join(" ")}
-          </p>
-          <p
-            id="publishDate"
-            className="text-xs font-extralight text-gray-700 dark:text-gray-500 italic pt-1 text-center"
-          >
-            published: {singlePost.publishDate.substring(0,10)}
-          </p>
-          <p
-            id="updatedAt"
-            className="text-xs font-extralight text-gray-700 dark:text-gray-500 italic pt-1 text-center"
-          >
-            updated: {singlePost.updatedAt.substring(0,10)}
-          </p>
-        </div>
+      <p
+        className={`loto text-xs font-extralight text-gray-700 dark:text-gray-500 italic cursor-pointer`}
+        onClick={readmore}
+      >
+        Read More
+      </p>
+      <div
+        className={`w-1/2 ${showTagsAndDate} flex-col justify-center items-center bg-transparent`}
+      >
+        <p
+          id="tags"
+          className="text-xs font-extralight text-gray-700 dark:text-gray-500 italic pt-1 text-center"
+        >
+          #{singlePost.tags.join(" ")}
+        </p>
+        <p
+          id="publishDate"
+          className="text-xs font-extralight text-gray-700 dark:text-gray-500 italic pt-1 text-center"
+        >
+          published: {singlePost.publishDate.substring(0, 10)}
+        </p>
+        <p
+          id="updatedAt"
+          className="text-xs font-extralight text-gray-700 dark:text-gray-500 italic pt-1 text-center"
+        >
+          updated: {singlePost.updatedAt.substring(0, 10)}
+        </p>
+      </div>
+      <div className="flex ">
+        <Likes />
+        <Comments />
+      </div>
     </div>
   );
 };
