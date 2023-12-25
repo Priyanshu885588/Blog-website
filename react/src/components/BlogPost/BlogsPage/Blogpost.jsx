@@ -48,8 +48,8 @@ export const Blogpost = ({ post, handleSingleblog }) => {
         </p>
       </div>
       <div className="flex ">
-        <Likes />
-        <Comments />
+        <Likes likeArray={post.likes}/>
+        <Comments commentArray={post.comments}/>
       </div>
     </div>
   );

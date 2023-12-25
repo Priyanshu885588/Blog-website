@@ -1,6 +1,7 @@
 import React from "react";
+import { useState } from "react";
 
-export const Likes = () => {
+export const Likes = ({likeArray}) => {
   return (
     <div className="w-16 bg-slate-100 rounded-l-xl h-12 shadow-md flex gap-2 justify-center items-center dark:bg-gray-900">
       <button
@@ -17,7 +18,7 @@ export const Likes = () => {
           <path d="M3 7H1a1 1 0 0 0-1 1v8a2 2 0 0 0 4 0V8a1 1 0 0 0-1-1Zm12.954 0H12l1.558-4.5a1.778 1.778 0 0 0-3.331-1.06A24.859 24.859 0 0 1 6 6.8v9.586h.114C8.223 16.969 11.015 18 13.6 18c1.4 0 1.592-.526 1.88-1.317l2.354-7A2 2 0 0 0 15.954 7Z" />
         </svg>
       </button>
-      <p className="text-black dark:text-white text-base">2</p>
+      <p className="text-black dark:text-white text-base">{likeArray.length}</p>
     </div>
   );
 };
