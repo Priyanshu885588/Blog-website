@@ -12,7 +12,6 @@ export const getAllPosts = async () => {
   }
 };
 
-
 export const getPostById = async (id) => {
   const response = await axios.get(`${API_URL}/${id}`);
   return response.data;
@@ -27,7 +26,6 @@ export const createPost = async (postData) => {
     },
   });
 
-
   return response.data;
 };
 
@@ -39,4 +37,17 @@ export const updatePost = async (id, postData) => {
 export const deletePost = async (id) => {
   const response = await axios.delete(`${API_URL}/${id}`);
   return response.data;
+};
+
+export const toggleLike = async (postData) => {
+  try {
+    const response = await axios.patch(
+      `${API_URL}/${postData.postId}/like`,
+      postData
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error toggling like:", error);
+    throw error;
+  }
 };

@@ -46,7 +46,6 @@ export const SignIn = () => {
             password: values.password,
           }).unwrap();
           const token = res.token;
-          console.log(token);
           dispatch(setCrendentials({ ...res }));
           navigate("/");
         } catch (err) {
