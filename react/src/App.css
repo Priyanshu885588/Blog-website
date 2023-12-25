@@ -1,28 +1,35 @@
 body {
   width: 100vw;
   min-height: 100vh;
-   /* Default background color for light mode */
   overflow-x: hidden;
+  background-image: url(assets/bg.jpg);
+  background-color: #00000056;
+  background-blend-mode: luminosity;
+  background-size: cover; 
+  background-position: center; 
+  background-position-y: 30%;
+  background-repeat: no-repeat;
 }
 
 .dark {
-  background-color: #000000; /* Set the background color for dark mode */ /* Set the text color for dark mode */
+  background-color: #00000092;
+  background-blend-mode: multiply;
+
 }
 
-.box-shadow{
+.box-shadow {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.482);
 }
 
 .entry-animation {
   animation: entry 0.7s;
-  
 }
 
-.z-51{
+.z-51 {
   z-index: 51;
 }
 
-.h-screen-90{
+.h-screen-90 {
   height: 90vh;
 }
 
@@ -34,12 +41,10 @@ body {
   100% {
     left: 0;
   }
-
 }
 
 .entry-animation1 {
   animation: entry1 0.7s;
-  
 }
 
 @keyframes entry1 {
@@ -50,13 +55,11 @@ body {
   100% {
     right: 0;
   }
-
 }
 
-.light-border{
+.light-border {
   border: 1px solid gray;
 }
-
 
 /* Webkit (Chrome, Safari) */
 ::-webkit-scrollbar {

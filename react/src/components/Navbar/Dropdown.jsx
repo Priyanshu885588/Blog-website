@@ -36,16 +36,11 @@ export const Dropdown = ({ userInfo }) => {
       <div className="relative inline-block">
         <button
           id="dropdownHoverButton"
-          className={`text-black overflow-hidden dark:text-white quicksand flex justify-center items-center gap-1 hover:text-gray-400 font-medium capitalize text-sm text-center`}
+          className={`text-white overflow-hidden dark:text-white quicksand flex justify-center items-center gap-1 hover:text-gray-400 font-medium capitalize text-base text-center`}
           type="button"
           onClick={dropdownChange}
         >
           {`${userInfo.name} `}
-          <img
-            className="w-3 h-3"
-            src="https://img.icons8.com/ios/50/expand-arrow--v1.png"
-            alt="expand-arrow--v1"
-          />
         </button>
 
         <div

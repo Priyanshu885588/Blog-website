@@ -14,16 +14,16 @@ export const SingleBlog = ({ singlePost, handleSingleblog }) => {
   };
 
   return (
-    <div key={singlePost._id} className="bg-gray-100 dark:bg-black text-3xl absolute w-full min-h-screen entry-animation1 top-0 flex flex-col pt-5 gap-3 justify-start items-center z-50">
+    <div key={singlePost._id} className="bg-transparent backdrop-blur-3xl text-3xl absolute w-full min-h-screen entry-animation1 top-0 flex flex-col pt-5 gap-3 justify-start items-center z-50">
       <p
-        className=" text-gray-900 dark:text-gray-700 cursor-pointer hover:text-gray-400 hover:dark:text-white text-3xl "
+        className=" text-gray-300 dark:text-gray-200 cursor-pointer hover:text-gray-400 hover:dark:text-white text-3xl "
         onClick={handleSingleblog}
       >
         ↜
       </p>
       <div
         key={singlePost._id} // Assuming each post has a unique identifier like 'id'
-        className="w-11/12 md:w-1/2 h-80 p-6 bg-white border box-shadow border-gray-200 rounded-2xl dark:bg-transparent dark:border-gray-700 flex flex-col items-center justify-between "
+        className="w-11/12 md:w-1/2 h-80 p-6 bg-gray-100 border box-shadow border-gray-200 rounded-2xl dark:bg-transparent dark:border-gray-700 flex flex-col items-center justify-between "
       >
         <div className="flex flex-col items-center justify-center overflow-auto">
           <h5

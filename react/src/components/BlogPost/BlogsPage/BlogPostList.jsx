@@ -56,7 +56,7 @@ export const BlogPostList = () => {
     );
   }
   if (loading) {
-    return (<div className="h-screen w-screen">
+    return (<div className="h-full w-screen">
       <Loading />
     </div>
       
@@ -69,7 +69,7 @@ export const BlogPostList = () => {
   }
   return (
     <>
-      <div className="text-black dark:text-white flex justify-center text-center bg-white dark:bg-black md:mt-0">
+      <div className="text-black dark:text-white flex justify-center text-center md:mt-0">
         <div className="w-full overflow-y-auto flex flex-wrap gap-2 justify-center mb-5">
           {posts.map((post) => (
             <Blogpost

@@ -41,7 +41,7 @@ export const Likes = ({ postId, likeArray }) => {
     }
   };
   return (
-    <div className="w-16 bg-slate-100 rounded-l-xl h-12 shadow-md flex gap-2 justify-center items-center dark:bg-gray-900">
+    <div className="w-16 bg-transparent rounded-l-xl h-12 shadow-md flex gap-2 justify-center items-center">
       <Toaster />
       <button
         type="button"
