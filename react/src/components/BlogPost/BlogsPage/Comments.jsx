@@ -13,7 +13,7 @@ export const Comments = ({commentArray}) => {
     }
   };
   return (
-    <div className="w-16 bg-transparent rounded-r-xl h-12 shadow-md flex gap-2 justify-center items-center">
+    <div className="w-16 dark:bg-transparent bg-slate-50 rounded-r-xl h-12 shadow-md flex gap-2 justify-center items-center">
       <button
         type="button"
         className="text-blue-700 border border-gray-700 hover:bg-blue-300 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-1.5 text-center inline-flex items-center dark:bg-gray-200 dark:hover:text-white  dark:hover:bg-blue-500"

@@ -6,15 +6,19 @@ import { useSelector, useDispatch } from "react-redux";
 import { Dropdown } from "./Dropdown";
 
 export const HorizontalNavbar = () => {
+  const [triggerBar, setTriggerBar] = useState(false);
+  const handleTriggerBar = () => {
+    setTriggerBar((prev) => !prev);
+  };
   const { userInfo } = useSelector((state) => state.auth);
 
   return (
     <div className="w-screen bg-transparent z-50 h-16 sticky top-0 md:h-28 flex justify-center items-center">
-      <div className="w-5/6 border-2 flex justify-between bg-transparent h-4/6 text-white backdrop-blur-xl">
+      <div className="w-5/6 border-2 flex justify-between items-center bg-transparent h-4/6 text-white backdrop-blur-xl">
         <div className="flex gap-4 border-r-2 h-full p-2 justify-center items-center">
           <DarkModeToggle />
         </div>
-        <div className="h-full border-r-2 border-l-2 flex justify-evenly items-center w-1/2 quicksand">
+        <div className="md:h-full md:bg-transparent border-r-2 border-l-2 md:flex justify-evenly items-center md:w-1/2 quicksand w-32 md:static md:flex-row flex-col hidden">
           <Link
             to="/"
             className="dark:text-white hover:text-gray-400 hover:dark:text-gray-600 text-white w-full text-xl md:text-lg text-center"
@@ -34,6 +38,53 @@ export const HorizontalNavbar = () => {
             Add blogs
           </Link>
         </div>
+        <div className="md:hidden ">
+          <button
+            onClick={handleTriggerBar}
+            type="button"
+            className="inline-flex items-center p-1 w-8 h-8 justify-center rounded-full border"
+          >
+            <svg
+              className="w-4 h-4"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 17 14"
+            >
+              <path
+                stroke="white"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="3"
+                d="M1 1h15M1 7h15M1 13h15"
+              />
+            </svg>
+          </button>
+          {triggerBar && (
+            <div className="">
+              <div className="flex flex-col gap-3 absolute bg-gray-900 rounded-b-3xl top-10 left-0 w-full quicksand p-5">
+                <Link
+                  to="/"
+                  className="dark:text-white hover:text-gray-400 hover:dark:text-gray-600 text-white w-full text-xl md:text-lg text-center"
+                >
+                  Home
+                </Link>
+                <Link
+                  to="/blogs"
+                  className="dark:text-white hover:text-gray-400 hover:dark:text-gray-600 text-white ack w-full text-xl md:text-lg text-center"
+                >
+                  Blogs
+                </Link>
+                <Link
+                  to="/add-blog"
+                  className="dark:text-white hover:text-gray-400 hover:dark:text-gray-600 text-white w-full text-xl md:text-lg text-center"
+                >
+                  Add blogs
+                </Link>
+              </div>
+            </div>
+          )}
+        </div>
         <div className="border-l h-full w-30 relative overflow-visible dark:text-white flex justify-center items-center text-black p-2 gap-4 text-lg">
           {userInfo ? (
             <>
@@ -41,7 +92,10 @@ export const HorizontalNavbar = () => {
             </>
           ) : (
             <>
-              <Link to="/SignIn" className="quicksand hover:text-gray-500 text-white">
+              <Link
+                to="/SignIn"
+                className="quicksand hover:text-gray-500 text-white"
+              >
                 Sign In
               </Link>
             </>

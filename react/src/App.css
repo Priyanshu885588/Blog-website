@@ -5,8 +5,8 @@ body {
   background-image: url(assets/bg.jpg);
   background-color: #00000056;
   background-blend-mode: luminosity;
-  background-size: cover; 
-  background-position: center; 
+  background-size: cover;
+  background-position: center;
   background-position-y: 30%;
   background-repeat: no-repeat;
 }
@@ -14,9 +14,7 @@ body {
 .dark {
   background-color: #00000092;
   background-blend-mode: multiply;
-
 }
-
 .box-shadow {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.482);
 }
