@@ -96,8 +96,8 @@ const toggleLike = async (req, res) => {
 
 const getlikes = async (req, res) => {
   try {
-    const { postId } = req.body;
-    const post = await Post.findById(postId);
+    const { id } = req.params;
+    const post = await Post.findById(id);
     if (!post) {
       return res.status(404).json({ msg: "Post not found" });
     }

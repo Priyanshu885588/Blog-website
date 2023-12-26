@@ -10,7 +10,37 @@ export const Likes = ({ postId }) => {
   const [buttonColor, setButtonColor] = useState("");
 
   useEffect(() => {
-    const to = localStorage.getItem("userInfo");
+    const fetchUserData = async () => {
+      try {
+        const to = localStorage.getItem("userInfo");
+        if (to) {
+          const userObject = JSON.parse(to);
+          const tokenValue = userObject.token;
+          const userIdValue = userObject._id;
+
+          setuserId(userIdValue);
+          setToken(tokenValue);
+
+          // Now userId and token are set, proceed with other logic
+          const likesData = await getlikes(postId);
+          setLikeCount(likesData.likes.length);
+
+          if (likesData.likes.includes(userIdValue)) {
+            setButtonColor("bg-blue-600 text-white");
+          }
+        } else {
+          const likesData = await getlikes(postId);
+          setLikeCount(likesData.likes.length);
+        }
+      } catch (error) {
+        console.error("Error fetching user data or likes:", error);
+      }
+    };
+
+    fetchUserData();
+  }, [postId]); // This effect runs on mount and whenever postId changes
+
+  useEffect(() => {
     const fetchLikes = async () => {
       try {
         const likesData = await getlikes(postId);
@@ -23,14 +53,6 @@ export const Likes = ({ postId }) => {
       }
     };
     fetchLikes();
-    if (to) {
-      const userObject = JSON.parse(to);
-      const tokenValue = userObject.token;
-      const userIdValue = userObject._id;
-      
-      setuserId(userIdValue);
-      setToken(tokenValue);
-    }
   }, []);
 
   const fetchData = async () => {

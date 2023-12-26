@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://blog-website-dtgf.onrender.com/api/v1/posts"; // Adjust the URL based on your backend server
+const API_URL = "http://localhost:3000/api/v1/posts"; // Adjust the URL based on your backend server
 
 export const getAllPosts = async () => {
   try {
@@ -52,15 +52,12 @@ export const toggleLike = async (postData) => {
   }
 };
 
-export const getlikes = async(postId) =>{
+export const getlikes = async (postId) => {
   try {
-    const response = await axios.get(
-      `${API_URL}/${postId}/like`,
-      {postId}
-    );
+    const response = await axios.get(`${API_URL}/${postId}/like`);
     return response.data;
   } catch (error) {
     console.error("Error toggling like:", error);
     throw error;
   }
-}
+};
