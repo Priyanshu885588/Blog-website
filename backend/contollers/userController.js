@@ -98,10 +98,31 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   }
 }); //@access.private
 
+const getUserPosts = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const userPosts = await Post.find({ authorId: userId });
+
+    if (!userPosts || userPosts.length === 0) {
+      return res
+        .status(404)
+        .json({ msg: "No blog posts found for the specified user" });
+    }
+
+    res.status(200).json({ userPosts });
+  } catch (error) {
+    console.error("Error fetching user's blog posts:", error);
+    res.status(500).json({ msg: "Server error" });
+  }
+};
+
+
+
 module.exports = {
   authUser,
   registerUser,
   logoutUser,
   getuserProfile,
   updateUserProfile,
+  getUserPosts
 };

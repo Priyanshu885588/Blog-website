@@ -7,6 +7,7 @@ import { SignIn } from "./components/UserAuth/SignIn";
 import { HorizontalNavbar } from "./components/Navbar/HorizontalNavbar";
 import { UserProfile } from "./components/UserAuth/UserProfile";
 import { PrivateRoute } from "./components/UserAuth/PrivateRoute";
+import { UserPostList } from "./components/BlogPost/UserBlogsPage/UserPostList";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           {/* {privateRoute} */}
           <Route path="/add-blog" element={<BlogPostForm />} />
           <Route path="/profile" element={<UserProfile />}></Route>
+          <Route path="/userblogs" element={<UserPostList />} />
         </Route>
       </Routes>
     </Router>

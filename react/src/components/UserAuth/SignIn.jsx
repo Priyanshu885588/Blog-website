@@ -60,7 +60,7 @@ export const SignIn = () => {
 
   return (
     <>
-      <div className="h-screen absolute w-screen top-0 dark:bg-black bg-white pt-10 z-50 flex flex-col justify-center items-center gap-2">
+      <div className="h-screen absolute w-screen top-0 bg-transparent backdrop-blur-3xl pt-10 z-50 flex flex-col justify-center items-center gap-2">
         {isLoading && (
           <div className="absolute top-0 h-screen w-screen">
             <Loading />
@@ -124,14 +124,14 @@ export const SignIn = () => {
           </button>
         </form>
         <p
-          className="text-blue-700 cursor-pointer opacity-70 hover:underline z-10"
+          className="text-black dark:text-gray-100 cursor-pointer opacity-70 hover:underline z-10"
           onClick={toggleSignUp}
         >
           Don't have an account
         </p>
         <Link
           to="/"
-          className="text-blue-700 opacity-50 hover:underline text-sm z-10"
+          className="text-black dark:text-gray-200 opacity-50 hover:underline text-sm z-10"
         >
           Back to home
         </Link>

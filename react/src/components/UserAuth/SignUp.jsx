@@ -47,7 +47,7 @@ export const SignUp = ({ toggleSignUp }) => {
       },
     });
   return (
-    <div className="h-screen absolute w-screen top-0 dark:bg-black bg-white z-50 flex flex-col justify-center items-center gap-2">
+    <div className="h-screen absolute w-screen top-0 bg-transparent backdrop-blur-3xl z-50 flex flex-col justify-center items-center gap-2">
       {isLoading && (
         <div className="absolute top-0 h-screen w-screen">
           <Loading />
@@ -158,12 +158,12 @@ export const SignUp = ({ toggleSignUp }) => {
         </button>
       </form>
       <p
-        className="text-blue-700 cursor-pointer opacity-70 hover:underline "
+        className="text-black dark:text-gray-200 cursor-pointer opacity-70 hover:underline "
         onClick={toggleSignUp}
       >
         Alerady have an account
       </p>
-      <Link to="/" className="text-blue-700 hover:underline text-sm opacity-50">
+      <Link to="/" className="text-black dark:text-gray-200 hover:underline text-sm opacity-50">
         Back to home
       </Link>
     </div>

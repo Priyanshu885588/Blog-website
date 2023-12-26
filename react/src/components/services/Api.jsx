@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/api/v1/posts"; // Adjust the URL based on your backend server
+const API_URL = "https://blog-website-dtgf.onrender.com/api/v1/posts"; // Adjust the URL based on your backend server
 
 export const getAllPosts = async () => {
   try {

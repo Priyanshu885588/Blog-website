@@ -38,7 +38,7 @@ export const Likes = ({ postId }) => {
     };
 
     fetchUserData();
-  }, [postId]); // This effect runs on mount and whenever postId changes
+  }, [postId]); 
 
   useEffect(() => {
     const fetchLikes = async () => {

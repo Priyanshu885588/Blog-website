@@ -2,7 +2,7 @@ import React from "react";
 import { useFormik } from "formik";
 import { formSchema } from "./schemas";
 import { createPost } from "../services/Api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 export const BlogPostForm = () => {
   const [loading, setLoading] = useState(false);
@@ -18,8 +18,8 @@ export const BlogPostForm = () => {
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("userInfo"));
-    setUserinfo(user)
-  },[]);
+    setUserinfo(user);
+  }, []);
 
   const {
     values,
@@ -38,8 +38,8 @@ export const BlogPostForm = () => {
       values.tags = tagsArray;
       const updatedValues = {
         ...values,
-        authorId:userinfo._id,
-        author:userinfo.name,
+        authorId: userinfo._id,
+        author: userinfo.name,
         published: true,
       };
       try {
@@ -82,8 +82,14 @@ export const BlogPostForm = () => {
   }
 
   return (
-    <div className="bg-transparent dark:bg-transparent backdrop-blur-xl min-h-screen pt-7 w-full">
-      <h1 className="text-center montserrat uppercase text-xl mb-8 text-white dark:text-gray-400 pt-4">
+    <div className="z-51 absolute top-0 left-0 bg-transparent dark:bg-transparent backdrop-blur-3xl min-h-screen pt-7 w-full">
+      <Link
+        to="/"
+        className="absolute top-2 left-2 dark:text-white hover:text-gray-400 hover:dark:text-gray-600 text-white text-xl md:text-lg"
+      >
+        ⇽ BACK 
+      </Link>
+      <h1 className="text-center montserrat uppercase text-xl text-white dark:text-gray-400 pt-2">
         Publish your blog here
       </h1>
       <form className="w-2/3 mx-auto bg-transparent" onSubmit={handleSubmit}>
@@ -92,7 +98,7 @@ export const BlogPostForm = () => {
             type="text"
             name="title"
             id="title"
-            className="block py-2.5 px-0 w-full text-sm text-gray-100 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            className="block py-2.5 px-0 w-full text-sm text-gray-100 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-200 focus:outline-none focus:ring-0 focus:border-blue-200 peer"
             placeholder=" "
             value={values.title}
             onChange={handleChange}
@@ -100,13 +106,13 @@ export const BlogPostForm = () => {
             autoComplete="off"
           />
           {errors.title && touched.title ? (
-            <p className="text-red-400 opacity-80 mt-1 text-sm">
+            <p className="text-red-200 opacity-80 mt-1 text-sm">
               {errors.title}
             </p>
           ) : null}
           <label
             htmlFor="title"
-            className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            className="peer-focus:font-medium absolute text-sm text-white duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-200 peer-focus:dark:text-blue-200 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
           >
             Title
           </label>
@@ -117,7 +123,7 @@ export const BlogPostForm = () => {
             type="text"
             name="tags"
             id="tags"
-            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+            className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-200 focus:outline-none focus:ring-0 focus:border-blue-200 peer"
             placeholder=" "
             value={values.tags}
             onChange={handleChange}
@@ -125,14 +131,14 @@ export const BlogPostForm = () => {
             autoComplete="off"
           />
           {errors.tags && touched.tags ? (
-            <p className="text-red-400 opacity-80 mt-1 text-sm">
+            <p className="text-red-200 opacity-80 mt-1 text-sm">
               {errors.tags}
             </p>
           ) : null}
 
           <label
             htmlFor="tags"
-            className="peer-focus:font-medium absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+            className="peer-focus:font-medium absolute text-sm text-white duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-200 peer-focus:dark:text-blue-200 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
           >
             Tags
           </label>
@@ -147,7 +153,7 @@ export const BlogPostForm = () => {
           name="content"
           id="content"
           rows="8"
-          className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 resize-none"
+          className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 resize-none"
           placeholder="Wrtie creatively "
           value={values.content}
           onChange={handleChange}
@@ -156,7 +162,7 @@ export const BlogPostForm = () => {
         ></textarea>
 
         {errors.content && touched.content ? (
-          <p className="text-red-400 opacity-80 mt-1 text-sm">
+          <p className="text-red-200 opacity-80 mt-1 text-sm">
             {errors.content}
           </p>
         ) : null}
@@ -169,7 +175,7 @@ export const BlogPostForm = () => {
         </button>
         <button
           type="reset"
-          className="hover:text-white text-gray-600 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+          className="hover:text-blue-500 text-gray-100 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
           onClick={handleReset}
         >
           Reset

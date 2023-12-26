@@ -18,25 +18,36 @@ export const HorizontalNavbar = () => {
         <div className="flex gap-4 border-r-2 h-full p-2 justify-center items-center">
           <DarkModeToggle />
         </div>
-        <div className="md:h-full md:bg-transparent border-r-2 border-l-2 md:flex justify-evenly items-center md:w-1/2 quicksand w-32 md:static md:flex-row flex-col hidden">
-          <Link
-            to="/"
-            className="dark:text-white hover:text-gray-400 hover:dark:text-gray-600 text-white w-full text-xl md:text-lg text-center"
-          >
-            Home
-          </Link>
-          <Link
-            to="/blogs"
-            className="dark:text-white hover:text-gray-400 hover:dark:text-gray-600 text-white ack w-full text-xl md:text-lg text-center"
-          >
-            Blogs
-          </Link>
-          <Link
-            to="/add-blog"
-            className="dark:text-white hover:text-gray-400 hover:dark:text-gray-600 text-white w-full text-xl md:text-lg text-center"
-          >
-            Add blogs
-          </Link>
+        <div className="md:h-full md:bg-transparent md:flex justify-evenly items-center md:w-full quicksand w-32 md:static md:flex-row flex-col hidden">
+          <div className="md:h-full md:bg-transparent md:flex justify-evenly items-center md:w-1/2 quicksand w-32 md:static md:flex-row flex-col hidden">
+            <Link
+              to="/"
+              className="dark:text-white hover:text-gray-400 hover:dark:text-gray-600 text-white w-full text-xl md:text-lg text-center"
+            >
+              Home
+            </Link>
+            <Link
+              to="/blogs"
+              className="dark:text-white hover:text-gray-400 hover:dark:text-gray-600 text-white ack w-full text-xl md:text-lg text-center"
+            >
+              Blogs
+            </Link>
+          </div>
+
+          <div className="md:h-full md:bg-transparent border-l-2 md:flex justify-evenly items-center md:w-1/2 quicksand md:static md:flex-row flex-col hidden">
+            <Link
+              to="/add-blog"
+              className="dark:text-white hover:text-gray-400 hover:dark:text-gray-600 text-white w-full text-xl md:text-lg text-center"
+            >
+              Add blogs
+            </Link>
+            <Link
+              to="/userblogs"
+              className="dark:text-white hover:text-gray-400 hover:dark:text-gray-600 text-white w-full text-xl md:text-lg text-center"
+            >
+              Your blogs
+            </Link>
+          </div>
         </div>
         <div className="md:hidden ">
           <button
@@ -80,6 +91,12 @@ export const HorizontalNavbar = () => {
                   className="dark:text-white hover:text-gray-400 hover:dark:text-gray-600 text-white w-full text-xl md:text-lg text-center"
                 >
                   Add blogs
+                </Link>
+                <Link
+                  to="/userblogs"
+                  className="dark:text-white hover:text-gray-400 hover:dark:text-gray-600 text-white w-full text-xl md:text-lg text-center"
+                >
+                  Your blogs
                 </Link>
               </div>
             </div>
