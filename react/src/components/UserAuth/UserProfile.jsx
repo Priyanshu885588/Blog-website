@@ -63,7 +63,7 @@ export const UserProfile = ({ toggleSignUp }) => {
       },
     });
   return (
-    <div className="h-screen absolute w-screen top-0 dark:bg-black bg-white z-50 flex flex-col justify-center items-center gap-2">
+    <div className="h-screen absolute w-screen top-0 bg-transparent backdrop-blur-xl z-50 flex flex-col justify-center items-center gap-2">
       {isLoading && (
         <div className="absolute top-0 h-screen w-screen">
           <Loading />
@@ -186,10 +186,10 @@ export const UserProfile = ({ toggleSignUp }) => {
           </div>
         )}
       </form>
-      <button onClick={handleEditing}>
+      <button onClick={handleEditing} className="text-black dark:text-white">
         {!isEditing ? "Update Your Details" : "Exit edit mode"}
       </button>
-      <Link to="/" className="text-blue-700 hover:underline text-sm opacity-50">
+      <Link to="/" className="dark:text-white text-black hover:underline text-sm opacity-50">
         Back to home
       </Link>
     </div>

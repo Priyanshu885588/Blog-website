@@ -51,3 +51,16 @@ export const toggleLike = async (postData) => {
     throw error;
   }
 };
+
+export const getlikes = async(postId) =>{
+  try {
+    const response = await axios.get(
+      `${API_URL}/${postId}/like`,
+      {postId}
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error toggling like:", error);
+    throw error;
+  }
+}

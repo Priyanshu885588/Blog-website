@@ -6,12 +6,13 @@ const {
     createPost,
     updatePost,
     deletePost,
-    toggleLike
+    toggleLike,
+    getlikes
 }=require('../contollers/posts')
 const protect = require("../middleware/authMiddleware");
 
 router.route("/").get(getAllPosts).post(createPost);
 router.route("/:id").get(getSinglePost).patch(updatePost).delete(deletePost);
-router.route("/:id/like").patch(protect,toggleLike);
+router.route("/:id/like").patch(protect,toggleLike).get(getlikes);
 
 module.exports = router;

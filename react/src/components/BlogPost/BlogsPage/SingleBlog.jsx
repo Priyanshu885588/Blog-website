@@ -47,7 +47,7 @@ export const SingleBlog = ({ singlePost, handleSingleblog }) => {
         </div>
       </div>
       <p
-        className={`loto text-xs font-extralight text-gray-700 dark:text-gray-500 italic cursor-pointer`}
+        className={`loto text-xs font-extralight text-gray-200 dark:text-gray-100 italic cursor-pointer`}
         onClick={readmore}
       >
         Read More
@@ -57,26 +57,22 @@ export const SingleBlog = ({ singlePost, handleSingleblog }) => {
       >
         <p
           id="tags"
-          className="text-xs font-extralight text-gray-700 dark:text-gray-500 italic pt-1 text-center"
+          className="text-xs font-extralight text-gray-200 dark:text-gray-100 italic pt-1 text-center"
         >
           #{singlePost.tags.join(" ")}
         </p>
         <p
           id="publishDate"
-          className="text-xs font-extralight text-gray-700 dark:text-gray-500 italic pt-1 text-center"
+          className="text-xs font-extralight text-gray-200 dark:text-gray-100 italic pt-1 text-center"
         >
           published: {singlePost.publishDate.substring(0, 10)}
         </p>
         <p
           id="updatedAt"
-          className="text-xs font-extralight text-gray-700 dark:text-gray-500 italic pt-1 text-center"
+          className="text-xs font-extralight text-gray-200 dark:text-gray-100 italic pt-1 text-center"
         >
           updated: {singlePost.updatedAt.substring(0, 10)}
         </p>
-      </div>
-      <div className="flex ">
-        <Likes likeArray={singlePost.likes} postId={singlePost._id}/>
-        <Comments commentArray={singlePost.comments}/>
       </div>
     </div>
   );

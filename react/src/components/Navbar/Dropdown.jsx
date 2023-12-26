@@ -29,14 +29,14 @@ export const Dropdown = ({ userInfo }) => {
   return (
     <>
       {isLoading && (
-        <div className="h-full w-full">
+        <div className="h-1/2 w-1/2">
           <Loading />
         </div>
       )}
       <div className="relative inline-block">
         <button
           id="dropdownHoverButton"
-          className={`text-white overflow-hidden dark:text-white quicksand flex justify-center items-center gap-1 hover:text-gray-400 font-medium capitalize text-base text-center`}
+          className={`text-black overflow-hidden quicksand flex justify-center items-center gap-1 hover:text-gray-400 font-medium capitalize text-base text-center`}
           type="button"
           onClick={dropdownChange}
         >

@@ -85,7 +85,7 @@ export const HorizontalNavbar = () => {
             </div>
           )}
         </div>
-        <div className="border-l h-full w-30 relative overflow-visible dark:text-white flex justify-center items-center text-black p-2 gap-4 text-lg">
+        <div className="border-l h-full w-30 relative overflow-visible bg-white text-black flex justify-center items-center p-2 gap-4 text-lg">
           {userInfo ? (
             <>
               <Dropdown userInfo={userInfo} />
@@ -94,7 +94,7 @@ export const HorizontalNavbar = () => {
             <>
               <Link
                 to="/SignIn"
-                className="quicksand hover:text-gray-500 text-white"
+                className="quicksand hover:text-gray-500 text-black bg-white"
               >
                 Sign In
               </Link>

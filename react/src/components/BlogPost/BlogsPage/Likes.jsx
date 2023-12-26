@@ -2,7 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { toggleLike } from "../../services/Api";
 import toast, { Toaster } from "react-hot-toast";
-export const Likes = ({ postId, likeArray }) => {
+import { getlikes } from "../../services/Api";
+export const Likes = ({ postId }) => {
   const [userId, setuserId] = useState("");
   const [token, setToken] = useState("");
   const [likeCount, setLikeCount] = useState();
@@ -10,14 +11,23 @@ export const Likes = ({ postId, likeArray }) => {
 
   useEffect(() => {
     const to = localStorage.getItem("userInfo");
-    setLikeCount(likeArray.length);
+    const fetchLikes = async () => {
+      try {
+        const likesData = await getlikes(postId);
+        setLikeCount(likesData.likes.length);
+        if (likesData.likes.includes(userId)) {
+          setButtonColor("bg-blue-600 text-white");
+        }
+      } catch (error) {
+        console.error("Error fetching likes:", error);
+      }
+    };
+    fetchLikes();
     if (to) {
       const userObject = JSON.parse(to);
       const tokenValue = userObject.token;
       const userIdValue = userObject._id;
-      if (likeArray.includes(userIdValue)) {
-        setButtonColor("bg-blue-600 text-white");
-      }
+      
       setuserId(userIdValue);
       setToken(tokenValue);
     }

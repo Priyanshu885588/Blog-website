@@ -94,6 +94,21 @@ const toggleLike = async (req, res) => {
   }
 };
 
+const getlikes = async (req, res) => {
+  try {
+    const { postId } = req.body;
+    const post = await Post.findById(postId);
+    if (!post) {
+      return res.status(404).json({ msg: "Post not found" });
+    }
+    res.status(200).json({ likes: post.likes });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ msg: "Server error" });
+  }
+};
+
+
 module.exports = {
   getAllPosts,
   getSinglePost,
@@ -101,4 +116,5 @@ module.exports = {
   updatePost,
   deletePost,
   toggleLike,
+  getlikes,
 };
