@@ -9,7 +9,7 @@ export const Comments = ({commentArray}) => {
     if (!commentBox) {
       document.body.style.overflow = "hidden"; // Disable scrolling
     } else {
-      document.body.style.overflow = "auto"; // Enable scrolling
+      document.body.style.overflowY = "auto"; // Enable scrolling
     }
   };
   return (

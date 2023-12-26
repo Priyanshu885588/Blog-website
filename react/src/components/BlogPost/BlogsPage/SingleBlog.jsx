@@ -14,7 +14,10 @@ export const SingleBlog = ({ singlePost, handleSingleblog }) => {
   };
 
   return (
-    <div key={singlePost._id} className="bg-transparent backdrop-blur-3xl text-3xl absolute w-full min-h-screen entry-animation1 top-0 flex flex-col pt-5 gap-3 justify-start items-center z-50">
+    <div
+      key={singlePost._id}
+      className="bg-transparent backdrop-blur-3xl text-3xl absolute w-full min-h-screen entry-animation1 top-0 flex flex-col gap-3 justify-start items-center z-50"
+    >
       <p
         className=" text-gray-300 dark:text-gray-200 cursor-pointer hover:text-gray-400 hover:dark:text-white text-3xl "
         onClick={handleSingleblog}
@@ -23,9 +26,9 @@ export const SingleBlog = ({ singlePost, handleSingleblog }) => {
       </p>
       <div
         key={singlePost._id} // Assuming each post has a unique identifier like 'id'
-        className="w-11/12 md:w-1/2 h-80 p-6 bg-gray-100 border box-shadow border-gray-200 rounded-2xl dark:bg-transparent dark:border-gray-700 flex flex-col items-center justify-between "
+        className="w-11/12 md:w-1/2 h-[70vh] p-6 bg-gray-100 border box-shadow border-gray-200 rounded-2xl dark:bg-transparent dark:border-gray-700 flex flex-col pb-1 items-center justify-between "
       >
-        <div className="flex flex-col items-center justify-center overflow-auto">
+        <div className="flex flex-col gap-2 items-center justify-center overflow-auto">
           <h5
             id="title"
             className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white capitalize"
@@ -44,10 +47,16 @@ export const SingleBlog = ({ singlePost, handleSingleblog }) => {
           >
             {singlePost.content}
           </p>
+          <p
+            id="tags"
+            className=" text-sm font-extralight border rounded-full text-black border-black dark:border-white dark:text-gray-100 opacity-50 roboto p-1 pl-2 pr-2 text-center"
+          >
+            {singlePost.tags.join(" ")}
+          </p>
         </div>
       </div>
       <p
-        className={`loto text-xs font-extralight text-gray-200 dark:text-gray-100 italic cursor-pointer`}
+        className={`loto text-xs font-extralight text-gray-900 dark:text-gray-100 italic cursor-pointer`}
         onClick={readmore}
       >
         Read More
@@ -56,20 +65,14 @@ export const SingleBlog = ({ singlePost, handleSingleblog }) => {
         className={`w-1/2 ${showTagsAndDate} flex-col justify-center items-center bg-transparent`}
       >
         <p
-          id="tags"
-          className="text-xs font-extralight text-gray-200 dark:text-gray-100 italic pt-1 text-center"
-        >
-          #{singlePost.tags.join(" ")}
-        </p>
-        <p
           id="publishDate"
-          className="text-xs font-extralight text-gray-200 dark:text-gray-100 italic pt-1 text-center"
+          className="text-xs font-extralight text-gray-900 dark:text-gray-100 italic pt-1 text-center"
         >
           published: {singlePost.publishDate.substring(0, 10)}
         </p>
         <p
           id="updatedAt"
-          className="text-xs font-extralight text-gray-200 dark:text-gray-100 italic pt-1 text-center"
+          className="text-xs font-extralight text-gray-900 dark:text-gray-100 italic pt-1 text-center"
         >
           updated: {singlePost.updatedAt.substring(0, 10)}
         </p>

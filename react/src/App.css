@@ -2,18 +2,15 @@ body {
   width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
-  background-image: url(assets/bg.jpg);
+  background: url(assets/bg.jpg), url(assets/flipped-bg.jpg);
   background-color: #00000056;
-  background-blend-mode: luminosity;
-  background-size: cover;
-  background-position: center;
-  background-position-y: 30%;
-  background-repeat: no-repeat;
+  background-size: cover, cover;
+  background-position: top, top;
+  background-repeat: repeat, repeat;
 }
-
 .dark {
-  background-color: #00000092;
-  background-blend-mode: multiply;
+  background-color: #00000044;
+  background-blend-mode: darken;
 }
 .box-shadow {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.482);
