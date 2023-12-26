@@ -2,14 +2,14 @@ body {
   width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
-  background: url(assets/bg.jpg), url(assets/flipped-bg.jpg);
+  background: url(assets/bg1.jpg);
   background-color: #00000056;
-  background-size: cover, cover;
-  background-position: top, top;
-  background-repeat: repeat, repeat;
+  background-size: 100%;
+  background-position: top;
+  background-repeat: repeat;
 }
 .dark {
-  background-color: #00000044;
+  background-color: #000000bb;
   background-blend-mode: darken;
 }
 .box-shadow {
