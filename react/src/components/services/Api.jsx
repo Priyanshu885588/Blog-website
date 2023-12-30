@@ -61,3 +61,26 @@ export const getlikes = async (postId) => {
     throw error;
   }
 };
+
+export const createComment = async(postData) => {
+  try {
+    const response = await axios.post(
+      `${API_URL}/${postData.postId}/comments`,
+      postData
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error creating comment", error);
+    throw error;
+  }
+}
+
+export const getComments = async (postId) => {
+  try {
+    const response = await axios.get(`${API_URL}/${postId}/comments`);
+    return response.data;
+  } catch (error) {
+    console.error("Error getting comments", error);
+    throw error;
+  }
+};

@@ -29,29 +29,28 @@ export const Dropdown = ({ userInfo }) => {
   return (
     <>
       {isLoading && (
-        <div className="h-1/2 w-1/2">
+        <div className="absolute h-full w-full">
           <Loading />
         </div>
       )}
-      <div className="relative inline-block">
-        <button
+      <div className="relative flex justify-center items-center">
+        <div
           id="dropdownHoverButton"
-          className={`text-black overflow-hidden quicksand flex justify-center items-center gap-1 hover:text-gray-400 font-medium capitalize text-base text-center`}
-          type="button"
+          className={`text-black cursor-pointer overflow-hidden quicksand w-20 flex h-8 justify-center items-center gap-1 hover:text-gray-400 font-medium capitalize text-base text-center`}
           onClick={dropdownChange}
         >
           {`${userInfo.name} `}
-        </button>
+        </div>
 
         <div
           id="dropdownHover"
-          className={`absolute -right-2 top-10 ${dropdown} bg-white divide divide-gray-100 rounded-lg shadow dark:bg-gray-700 w-36 capitalize`}
+          className={`absolute md:top-16 bg-white top-10 ${dropdown} border-2 w-36 capitalize lato`}
         >
           <ul className="py-2 text-sm text-gray-700 w-full dark:text-gray-200">
             <li>
               <Link
                 to="/profile"
-                className="block w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer text-center"
+                className="block w-full px-4 py-2 text-black hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer text-center"
               >
                 Profile
               </Link>
@@ -59,14 +58,14 @@ export const Dropdown = ({ userInfo }) => {
             <li>
               <button
                 onClick={logoutHandler}
-                className="block px-4 py-2 w-full cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white text-center"
+                className="block px-4 py-2 text-black w-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white text-center"
               >
                 Log out
               </button>
             </li>
           </ul>
-          <div className="py-2 ">
-            <p className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-200 dark:hover:text-white border-t-2 border-gray-300">
+          <div className="py-2">
+            <p className="flex justify-center items-center px-4 py-2 text-sm text-gray-900 dark:text-gray-200 dark:hover:text-white border-t border-gray-300">
               {userInfo.name}
             </p>
           </div>

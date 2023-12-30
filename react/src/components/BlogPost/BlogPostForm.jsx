@@ -4,10 +4,11 @@ import { formSchema } from "./schemas";
 import { createPost } from "../services/Api";
 import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { selectUserInfo } from "../../slices/authSlice";
+import { useSelector } from "react-redux";
 export const BlogPostForm = () => {
   const [loading, setLoading] = useState(false);
-  const [userinfo, setUserinfo] = useState();
-
+  const userinfo = useSelector(selectUserInfo);
   const navigate = useNavigate();
   const initialValues = {
     title: "",
@@ -15,12 +16,6 @@ export const BlogPostForm = () => {
     author: "",
     content: "",
   };
-
-  useEffect(() => {
-    const user = JSON.parse(localStorage.getItem("userInfo"));
-    setUserinfo(user);
-  }, []);
-
   const {
     values,
     errors,
@@ -87,7 +82,7 @@ export const BlogPostForm = () => {
         to="/"
         className="absolute top-2 left-2 dark:text-white hover:text-gray-400 hover:dark:text-gray-600 text-white text-xl md:text-lg"
       >
-        ⇽ BACK 
+        ⇽ BACK
       </Link>
       <h1 className="text-center montserrat uppercase text-xl text-white dark:text-gray-400 pt-2">
         Publish your blog here

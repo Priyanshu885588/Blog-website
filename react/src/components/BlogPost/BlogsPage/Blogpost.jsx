@@ -2,7 +2,7 @@ import React from "react";
 import { Comments } from "./Comments";
 import { Likes } from "./Likes";
 
-export const Blogpost = ({ post, handleSingleblog }) => {
+export const Blogpost = ({ post, handleSingleblog,userInfo }) => {
   return (
     <div className="flex flex-col justify-center items-center">
       <div
@@ -36,8 +36,8 @@ export const Blogpost = ({ post, handleSingleblog }) => {
         </p>
       </div>
       <div className="flex ">
-        <Likes postId={post._id} likeArray={post.likes}/>
-        <Comments commentArray={post.comments}/>
+        <Likes postId={post._id} likeArray={post.likes} userInfo={userInfo}/>
+        <Comments commentArray={post.comments} userInfo={userInfo} postId={post._id}/>
       </div>
     </div>
   );

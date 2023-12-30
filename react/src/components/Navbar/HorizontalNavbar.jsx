@@ -49,7 +49,7 @@ export const HorizontalNavbar = () => {
             </Link>
           </div>
         </div>
-        <div className="md:hidden ">
+        <div className="md:hidden w-full flex justify-center items-center">
           <button
             onClick={handleTriggerBar}
             type="button"
@@ -102,7 +102,7 @@ export const HorizontalNavbar = () => {
             </div>
           )}
         </div>
-        <div className="border-l h-full w-30 relative overflow-visible bg-white text-black flex justify-center items-center p-2 gap-4 text-lg">
+        <div className="border-l h-full md:w-48 relative overflow-visible w-32 bg-white text-black flex justify-center items-center p-2 gap-4 text-lg">
           {userInfo ? (
             <>
               <Dropdown userInfo={userInfo} />

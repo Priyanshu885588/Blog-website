@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { toggleLike } from "../../services/Api";
 import toast, { Toaster } from "react-hot-toast";
 import { getlikes } from "../../services/Api";
-export const Likes = ({ postId }) => {
+export const Likes = ({ postId,userInfo }) => {
   const [userId, setuserId] = useState("");
   const [token, setToken] = useState("");
   const [likeCount, setLikeCount] = useState();
@@ -12,11 +12,10 @@ export const Likes = ({ postId }) => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const to = localStorage.getItem("userInfo");
-        if (to) {
-          const userObject = JSON.parse(to);
-          const tokenValue = userObject.token;
-          const userIdValue = userObject._id;
+        
+        if (userInfo) {
+          const tokenValue = userInfo.token;
+          const userIdValue = userInfo._id;
 
           setuserId(userIdValue);
           setToken(tokenValue);
@@ -38,9 +37,6 @@ export const Likes = ({ postId }) => {
     };
 
     fetchUserData();
-  }, [postId]); 
-
-  useEffect(() => {
     const fetchLikes = async () => {
       try {
         const likesData = await getlikes(postId);

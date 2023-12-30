@@ -5,26 +5,18 @@ import { SingleBlog } from "../BlogsPage/SingleBlog";
 import { Loading } from "../../UI/Loading";
 import { Link } from "react-router-dom";
 import { useGetUserPostsQuery } from "../../../slices/usersApiSlice";
+import { selectUserInfo } from "../../../slices/authSlice";
+import { useSelector } from "react-redux";
 
 export const UserPostList = () => {
   const [posts, setPosts] = useState([]);
   const [singlePost, setSinglePost] = useState({});
   const [singleBlog, setSingleBlog] = useState(false);
-  const [userId, setuserId] = useState("");
-  const { data, isLoading, isError } = useGetUserPostsQuery(userId, {
-    skip: !userId,
+  const userInfo = useSelector(selectUserInfo);
+  const { data, isLoading, isError } = useGetUserPostsQuery(userInfo._id, {
+    skip: !userInfo._id,
   });
-  useEffect(() => {
-    const fetchUserData = async () => {
-      const to = localStorage.getItem("userInfo");
-      if (to) {
-        const userObject = JSON.parse(to);
-        const userIdValue = userObject._id;
-        setuserId(userIdValue);
-      }
-    };
-    fetchUserData();
-  });
+
   const handleSingleblog = async (post_id) => {
     try {
       if (!singleBlog) {
@@ -38,9 +30,10 @@ export const UserPostList = () => {
   };
 
   useEffect(() => {
-    if (data) {
+    if (data && data.userPosts) {
       try {
-        const sortedPosts = data.userPosts.sort((a, b) => {
+        const sortedPosts = data.userPosts.slice(); // Create a copy of the array
+        sortedPosts.sort((a, b) => {
           const dateA = new Date(a.updatedAt);
           const dateB = new Date(b.updatedAt);
           if (isNaN(dateA) || isNaN(dateB)) {
@@ -49,14 +42,15 @@ export const UserPostList = () => {
           }
           return dateB - dateA;
         });
-
+  
         setPosts(sortedPosts);
       } catch (error) {
         console.error("Error sorting posts:", error);
-      } finally {
       }
     }
   }, [data]);
+  
+
   if (isError) {
     return (
       <div className="bg-white dark:bg-gray-100 w-full flex flex-col justify-center items-center p-10 text-center mt-20 open-sans text-2xl text-red-400">
@@ -93,6 +87,7 @@ export const UserPostList = () => {
               post={post}
               key={post._id}
               handleSingleblog={handleSingleblog}
+              userInfo={userInfo}
             />
           ))}
         </div>

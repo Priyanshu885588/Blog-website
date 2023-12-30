@@ -12,18 +12,10 @@ export const UserProfile = ({ toggleSignUp }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isEditing, setisEditing] = useState(false);
-  const [token, setToken] = useState("");
 
   const { userInfo } = useSelector((state) => state.auth);
-
+  
   const [updateProfile, { isLoading }] = useUpdateUserMutation();
-  useEffect(() => {
-    // Access localStorage here
-    const to = localStorage.getItem("userInfo");
-    const userObject = JSON.parse(to);
-    const tokenValue = userObject.token;
-    setToken(tokenValue)
-  }, []);
   useEffect(() => {
     values.name = userInfo.name;
     values.email = userInfo.email;
@@ -46,13 +38,12 @@ export const UserProfile = ({ toggleSignUp }) => {
       validationSchema: signUpSchema,
       onSubmit: async (values) => {
         try {
-          console.log(token);
           const res = await updateProfile({
             _id: userInfo._id,
             name: values.name,
             email: values.email,
             password: values.password,
-            token:token
+            token:userInfo.token
           }).unwrap();
           dispatch(setCrendentials(res));
           toast.success("Profile updated");

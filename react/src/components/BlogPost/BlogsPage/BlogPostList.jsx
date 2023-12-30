@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { getAllPosts, getPostById } from "../../services/Api";
 import { SingleBlog } from "./SingleBlog";
 import { Loading } from "../../UI/Loading";
+import { selectUserInfo } from "../../../slices/authSlice";
+import { useSelector } from "react-redux";
 
 export const BlogPostList = () => {
   const [posts, setPosts] = useState([]);
@@ -11,11 +13,11 @@ export const BlogPostList = () => {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
   const [singleBlog, setSingleBlog] = useState(false);
-
+  const userInfo = useSelector(selectUserInfo);
   const handleSingleblog = async (post_id) => {
     try {
       if (!singleBlog) {
-        const data = posts.find(post => post._id === post_id);
+        const data = posts.find((post) => post._id === post_id);
         setSinglePost(data);
       }
       setSingleBlog((preVisible) => !preVisible);
@@ -33,7 +35,7 @@ export const BlogPostList = () => {
           const dateB = new Date(b.updatedAt);
           if (isNaN(dateA) || isNaN(dateB)) {
             console.error("Invalid date format");
-            return 0; 
+            return 0;
           }
           return dateB - dateA;
         });
@@ -56,10 +58,10 @@ export const BlogPostList = () => {
     );
   }
   if (loading) {
-    return (<div className="h-full w-screen">
-      <Loading />
-    </div>
-      
+    return (
+      <div className="h-full w-screen">
+        <Loading />
+      </div>
     );
   }
   if (singleBlog) {
@@ -76,6 +78,7 @@ export const BlogPostList = () => {
               post={post}
               key={post._id}
               handleSingleblog={handleSingleblog}
+              userInfo={userInfo}
             />
           ))}
         </div>
