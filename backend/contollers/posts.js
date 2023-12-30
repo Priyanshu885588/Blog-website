@@ -1,11 +1,5 @@
 const Post = require("../modals/Post");
 
-let postCache = {
-  data: null,
-  timestamp: null,
-  expiration: 60,
-};
-
 const getAllPosts = async (req, res) => {
   try {
     const posts = await Post.find({});
@@ -108,6 +102,49 @@ const getlikes = async (req, res) => {
   }
 };
 
+const createComment = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { user, content } = req.body;
+
+    const post = await Post.findById(id);
+
+    if (!post) {
+      return res.status(404).json({ message: "Post not found" });
+    }
+
+    const newComment = {
+      user,
+      content,
+    };
+
+    post.comments.push(newComment);
+    await post.save();
+
+    res.status(201).json(newComment);
+  } catch (error) {
+    console.error("Error creating comment:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+const getComments = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    const post = await Post.findById(id);
+
+    if (!post) {
+      return res.status(404).json({ message: 'Post not found' });
+    }
+
+    const comments = post.comments;
+    res.status(200).json(comments);
+  } catch (error) {
+    console.error('Error getting comments:', error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
+};
 
 module.exports = {
   getAllPosts,
@@ -117,4 +154,6 @@ module.exports = {
   deletePost,
   toggleLike,
   getlikes,
+  createComment,
+  getComments
 };
