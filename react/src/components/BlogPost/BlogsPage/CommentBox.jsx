@@ -89,12 +89,6 @@ export const CommentBox = ({
               >
                 <footer className="flex justify-between items-center mb-2">
                   <p className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
-                    {/* Adjust the profile image source */}
-                    <img
-                      className="mr-2 w-6 h-6 rounded-full"
-                      src="https://flowbite.com/docs/images/people/profile-picture-4.jpg"
-                      alt={comment.user.name} // Use actual user name if available
-                    />
                     {comment.user.name}
                   </p>
                   <p className="text-xs text-gray-600 dark:text-gray-400">

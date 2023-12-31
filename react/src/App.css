@@ -3,7 +3,8 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background: url(assets/bg1.jpg);
-  background-color: #00000056;
+  background-color: #0000004d;
+  background-blend-mode: darken;
   background-size: 100%;
   background-position: top;
   background-repeat: repeat;

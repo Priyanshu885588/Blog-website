@@ -16,7 +16,7 @@ export const Dropdown = ({ userInfo }) => {
     try {
       await logoutApiCall().unwrap();
       dispatch(logout());
-      navigate("/");
+      window.location.reload();
     } catch (error) {
       console.log(error);
     }
@@ -65,7 +65,7 @@ export const Dropdown = ({ userInfo }) => {
             </li>
           </ul>
           <div className="py-2">
-            <p className="flex justify-center items-center px-4 py-2 text-sm text-gray-900 dark:text-gray-200 dark:hover:text-white border-t border-gray-300">
+            <p className="flex justify-center items-center px-4 py-2 text-sm text-gray-900 dark:text-gray-800 border-t border-gray-300">
               {userInfo.name}
             </p>
           </div>

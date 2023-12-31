@@ -84,3 +84,13 @@ export const getComments = async (postId) => {
     throw error;
   }
 };
+
+export const getTopLikedPosts = async () => {
+  try {
+    const response = await axios.get(`${API_URL}/topliked`);
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching top liked posts:", error);
+    throw error; // Rethrow the error to propagate it to the caller if needed
+  }
+};
