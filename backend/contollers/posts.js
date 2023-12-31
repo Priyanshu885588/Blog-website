@@ -132,17 +132,29 @@ const getComments = async (req, res) => {
   try {
     const { id } = req.params;
 
-    const post = await Post.findById(id).populate('comments.user', 'name');
+    const post = await Post.findById(id).populate("comments.user", "name");
 
     if (!post) {
-      return res.status(404).json({ message: 'Post not found' });
+      return res.status(404).json({ message: "Post not found" });
     }
 
     const comments = post.comments;
     res.status(200).json(comments);
   } catch (error) {
-    console.error('Error getting comments:', error);
-    res.status(500).json({ message: 'Internal Server Error' });
+    console.error("Error getting comments:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
+const getTopLikedPosts = async (req, res) => {
+  try {
+    const posts = await Post.find({}).sort({ likes: -1 }).limit(5);
+
+    res.status(200).json({ posts });
+  } catch (error) {
+    res
+      .status(500)
+      .json({ error: "Internal Server Error", details: error.message });
   }
 };
 
@@ -155,5 +167,6 @@ module.exports = {
   toggleLike,
   getlikes,
   createComment,
-  getComments
+  getComments,
+  getTopLikedPosts,
 };
