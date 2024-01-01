@@ -16,7 +16,7 @@ const protect = require("../middleware/authMiddleware");
 
 router.route("/").get(getAllPosts).post(createPost);
 router.route("/topliked").get(getTopLikedPosts);
-router.route("/:id").get(getSinglePost).patch(updatePost).delete(deletePost);
+router.route("/:id").get(getSinglePost).patch(updatePost).delete(protect,deletePost);
 router.route("/:id/like").patch(protect, toggleLike).get(getlikes);
 router.route("/:id/comments").post(protect, createComment).get(getComments);
 
