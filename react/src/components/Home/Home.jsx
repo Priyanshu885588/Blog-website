@@ -19,7 +19,6 @@ export const Home = () => {
           (a, b) => b.likes.length - a.likes.length
         );
         setPosts(sortedPosts);
-        console.log(sortedPosts);
       } catch (error) {
         console.log(error);
       } finally {

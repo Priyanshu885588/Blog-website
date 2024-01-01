@@ -1,10 +1,24 @@
 import React from "react";
-import { Comments } from "./Comments";
-import { Likes } from "./Likes";
+import { Comments } from "../BlogsPage/Comments";
+import { Likes } from "../BlogsPage/Likes";
+import { deletePost } from "../../services/Api";
+import toast, { Toaster } from "react-hot-toast";
 
-export const Blogpost = ({ post, handleSingleblog,userInfo }) => {
-  return (
+
+export const UserBlogpost = ({ post, handleSingleblog, userInfo }) => {
+  const performDeletePost  = async () =>{
+    try {
+        const data = await deletePost({postId:post._id,token:userInfo.token})
+    } catch (error) {
+        toast.error('Error')
+    }finally{
+        window.location.reload();
+    }
+  }
+  
+    return (
     <div className="flex flex-col justify-center items-center">
+      <Toaster />
       <div
         onClick={() => handleSingleblog(post._id)}
         key={post._id} // Assuming each post has a unique identifier like 'id'
@@ -36,9 +50,21 @@ export const Blogpost = ({ post, handleSingleblog,userInfo }) => {
         </p>
       </div>
       <div className="flex ">
-        <Likes postId={post._id} likeArray={post.likes} userInfo={userInfo}/>
-        <Comments commentArray={post.comments} userInfo={userInfo} postId={post._id}/>
+        <Likes postId={post._id} likeArray={post.likes} userInfo={userInfo} />
+        <Comments
+          commentArray={post.comments}
+          userInfo={userInfo}
+          postId={post._id}
+        />
+        <button
+          className="p-2 border-r-2 border-b-2 hover:text-red-200 hover:border-red-400 text-white"
+          onClick={performDeletePost}
+        >
+          Delete
+        </button>
       </div>
     </div>
   );
 };
+
+// Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, alias ullam consequuntur aperiam expedita optio ex deleniti ratione corrupti repellendus quaerat hic maiores dignissimos unde saepe tenetur laboriosam placeat. Optio.

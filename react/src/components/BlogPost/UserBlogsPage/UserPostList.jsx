@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { Blogpost } from "../BlogsPage/Blogpost";
+import { UserBlogpost } from "./UserBlogpost";
 import { SingleBlog } from "../BlogsPage/SingleBlog";
 import { Loading } from "../../UI/Loading";
 import { Link } from "react-router-dom";
@@ -13,9 +13,16 @@ export const UserPostList = () => {
   const [singlePost, setSinglePost] = useState({});
   const [singleBlog, setSingleBlog] = useState(false);
   const userInfo = useSelector(selectUserInfo);
-  const { data, isLoading, isError } = useGetUserPostsQuery(userInfo._id, {
+  const { data, isLoading, isError, refetch } = useGetUserPostsQuery(userInfo._id, {
     skip: !userInfo._id,
   });
+
+  useEffect(() => {
+    if (userInfo._id) {
+      // Fetch user posts when the component is mounted
+      refetch();
+    }
+  }, [userInfo._id, refetch]);
 
   const handleSingleblog = async (post_id) => {
     try {
@@ -42,7 +49,6 @@ export const UserPostList = () => {
           }
           return dateB - dateA;
         });
-  
         setPosts(sortedPosts);
       } catch (error) {
         console.error("Error sorting posts:", error);
@@ -83,7 +89,7 @@ export const UserPostList = () => {
       <div className="text-black dark:text-white flex justify-center text-center md:mt-0">
         <div className="w-full overflow-y-auto flex flex-wrap gap-2 justify-center mb-5">
           {posts.map((post) => (
-            <Blogpost
+            <UserBlogpost
               post={post}
               key={post._id}
               handleSingleblog={handleSingleblog}

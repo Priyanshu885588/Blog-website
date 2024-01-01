@@ -34,8 +34,10 @@ export const updatePost = async (id, postData) => {
   return response.data;
 };
 
-export const deletePost = async (id) => {
-  const response = await axios.delete(`${API_URL}/${id}`);
+export const deletePost = async (postData) => {
+  const response = await axios.delete(`${API_URL}/${postData.postId}`, {
+    data: postData,
+  });
   return response.data;
 };
 
@@ -62,7 +64,7 @@ export const getlikes = async (postId) => {
   }
 };
 
-export const createComment = async(postData) => {
+export const createComment = async (postData) => {
   try {
     const response = await axios.post(
       `${API_URL}/${postData.postId}/comments`,
@@ -73,7 +75,7 @@ export const createComment = async(postData) => {
     console.error("Error creating comment", error);
     throw error;
   }
-}
+};
 
 export const getComments = async (postId) => {
   try {
