@@ -2,11 +2,11 @@ import React from "react";
 
 export const Loading = () => {
   return (
-    <div className="flex absolute top-0 items-center justify-center w-full h-full backdrop-blur-3xl bg-transparent z-20">
+    <div className="flex absolute top-0 items-center justify-center w-full h-full  bg-transparent z-20">
       <div role="status">
         <svg
           aria-hidden="true"
-          className="w-8 h-8 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+          className="w-8 h-8 text-gray-400 animate-spin dark:text-gray-600 dark:fill-blue-600 fill-gray-800"
           viewBox="0 0 100 101"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

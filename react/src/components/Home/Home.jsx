@@ -39,22 +39,22 @@ export const Home = () => {
     return <SingleBlog singlePost={singleBlog} handleSingleblog={handleSingleblog}/>
   }
   return (
-    <div className=" dark:text-white w-full h-[calc(100vh-7rem)] text-white flex flex-col justify-between items-center">
+    <div className=" dark:text-white w-full h-[calc(100vh-4rem)] text-black flex flex-col justify-between items-center">
       <div className="md:w-1/2 w-11/12 flex flex-col justify-center items-center h-full gap-4 pb-2 md:m-0 m-2">
-        <p className=" text-sm opacity-80 border-r-2 nunito pr-2">
+        <p className=" text-sm opacity-80 border-r-2 border-black dark:border-white nunito pr-2">
           {posts[0].author}
         </p>
         <h1 className="md:text-4xl text-xl playfair font-extrabold italic text-center">
           {posts[0].title}
         </h1>
-        <p className=" text-xs opacity-80 border rounded-full nunito p-1 pl-2 pr-2">
+        <p className=" text-xs opacity-80 border border-black dark:border-white rounded-full nunito p-1 pl-2 pr-2">
           {posts[0].tags[0]}
         </p>
-        <button onClick={()=>setSingleBlog(posts[0])} className="border rounded-full md:text-sm hover:bg-white hover:text-black transition-all duration-500 text-sm open-sans p-2 pr-5 pl-5 backdrop-blur-xl">
+        <button onClick={()=>setSingleBlog(posts[0])} className="border rounded-full md:text-sm dark:border-white border-black hover:bg-white hover:text-black transition-all duration-500 text-sm open-sans p-2 pr-5 pl-5">
           Read more
         </button>
       </div>
-      <div className="w-full flex backdrop-blur-xl justify-evenly gap-4 min-h-52 items-center text-left p-9 flex-wrap">
+      <div className="w-full flex bg-gray-800 dark:bg-gray-950 text-white justify-evenly gap-4 min-h-52 items-center text-left p-9 flex-wrap">
         {posts.slice(1).map((post, index) => (
           <div key={post._id} onClick={()=>setSingleBlog(post)} className="md:w-48 w-full flex flex-col gap-2  border-b p-2 md:border-none cursor-pointer rounded-lg hover:text-yellow-400">
             <h1 className="text-base lato h-12 overflow-hidden">

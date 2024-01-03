@@ -2,23 +2,36 @@ body {
   width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
-  background: url(assets/bg1.jpg);
-  background-color: #0000004d;
-  background-blend-mode: darken;
-  background-size: 100%;
-  background-position: top;
-  background-repeat: repeat;
+  background-color: rgb(236, 229, 208);
 }
 .dark {
-  background-color: #000000bb;
-  background-blend-mode: darken;
+  background-color: black;
+  background-image: none;
 }
+
+button,
+div {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.primary-color {
+  background-color: rgb(236, 229, 208);
+}
+
 .box-shadow {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.482);
 }
 
 .entry-animation {
-  animation: entry 0.7s;
+  animation: entry 1s;
+}
+@keyframes entry {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
 }
 
 .z-51 {
@@ -29,32 +42,19 @@ body {
   height: 90vh;
 }
 
-@keyframes entry {
-  0% {
-    /* text-align: left; */
-    left: -10%;
-  }
-  100% {
-    left: 0;
-  }
-}
-
 .entry-animation1 {
-  animation: entry1 0.7s;
+  animation: entry1 0.3s;
 }
 
 @keyframes entry1 {
   0% {
-    /* text-align: left; */
-    right: 100%;
+    width: 0;
+    margin-left: 50%; /* Start from the center */
   }
   100% {
-    right: 0;
+    width: 100%;
+    margin-left: 0%; /* Start from the center */
   }
-}
-
-.light-border {
-  border: 1px solid gray;
 }
 
 /* Webkit (Chrome, Safari) */

@@ -69,7 +69,7 @@ export const Likes = ({ postId,userInfo }) => {
     }
   };
   return (
-    <div className="w-16 dark:bg-transparent bg-slate-50 rounded-l-xl h-12 shadow-md flex gap-2 justify-center items-center">
+    <div className="w-16 bg-transparent rounded-l-xl h-4 flex gap-2 justify-center items-center">
       <Toaster />
       <button
         type="button"

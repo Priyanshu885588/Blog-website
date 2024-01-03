@@ -60,21 +60,21 @@ export const SignIn = () => {
 
   return (
     <>
-      <div className="h-screen absolute w-screen top-0 bg-transparent backdrop-blur-3xl pt-10 z-50 flex flex-col justify-center items-center gap-2">
+      <div className="h-screen absolute w-screen top-0 dark:bg-black primary-color pt-10 z-50 flex flex-col justify-center items-center gap-2">
         {isLoading && (
           <div className="absolute top-0 h-screen w-screen">
             <Loading />
           </div>
         )}
         <Toaster />
-        <h1 className="text-white dark:text-gray-100 text-3xl montserrat">
+        <h1 className="text-black dark:text-gray-100 text-3xl montserrat">
           Sign In
         </h1>
         <form className="md:w-1/3 w-11/12" onSubmit={handleSubmit}>
           <div className="mb-5">
             <label
               htmlFor="email"
-              className="block mb-2 text-sm font-medium text-gray-100 dark:text-white"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Your email
             </label>
@@ -97,7 +97,7 @@ export const SignIn = () => {
           <div className="mb-5">
             <label
               htmlFor="password"
-              className="block mb-2 text-sm font-medium text-gray-100 dark:text-white"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Your password
             </label>
@@ -124,14 +124,14 @@ export const SignIn = () => {
           </button>
         </form>
         <p
-          className="text-white dark:text-gray-100 cursor-pointer opacity-70 hover:underline z-10"
+          className="text-black dark:text-gray-100 cursor-pointer opacity-70 hover:underline z-10"
           onClick={toggleSignUp}
         >
           Don't have an account
         </p>
         <Link
           to="/"
-          className="text-white dark:text-gray-200 opacity-50 hover:underline text-sm z-10"
+          className="text-black dark:text-gray-200 opacity-50 hover:underline text-sm z-10"
         >
           Back to home
         </Link>

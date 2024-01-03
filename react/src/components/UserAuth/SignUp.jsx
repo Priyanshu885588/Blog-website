@@ -46,7 +46,7 @@ export const SignUp = ({ toggleSignUp }) => {
       },
     });
   return (
-    <div className="min-h-screen absolute w-screen top-0 md:p-2 p-10 bg-transparent backdrop-blur-3xl z-50 flex md:flex-row flex-col justify-center items-center gap-2">
+    <div className="min-h-screen absolute w-screen top-0 md:p-2 p-10 dark:bg-black primary-color z-50 flex md:flex-row flex-col justify-center items-center gap-2">
       {isLoading && (
         <div className="absolute top-0 h-screen w-screen">
           <Loading />
@@ -54,7 +54,7 @@ export const SignUp = ({ toggleSignUp }) => {
       )}
       <Toaster />
       <div className="md:w-1/3 flex flex-col justify-center items-center gap-7">
-        <h1 className="text-white dark:text-gray-100 text-3xl montserrat">
+        <h1 className="text-black dark:text-gray-100 text-3xl montserrat">
           Sign Up
         </h1>
         
@@ -64,7 +64,7 @@ export const SignUp = ({ toggleSignUp }) => {
           <div className="mb-5">
             <label
               htmlFor="email"
-              className="block mb-2 text-sm font-medium text-gray-100 dark:text-white"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Your email
             </label>
@@ -87,7 +87,7 @@ export const SignUp = ({ toggleSignUp }) => {
           <div className="mb-5">
             <label
               htmlFor="name"
-              className="block mb-2 text-sm font-medium text-gray-100 dark:text-white"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Your name
             </label>
@@ -110,7 +110,7 @@ export const SignUp = ({ toggleSignUp }) => {
           <div className="mb-5">
             <label
               htmlFor="password"
-              className="block mb-2 text-sm font-medium text-gray-100 dark:text-white"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Your password
             </label>
@@ -132,7 +132,7 @@ export const SignUp = ({ toggleSignUp }) => {
           <div className="mb-5">
             <label
               htmlFor="ConfirmPassword"
-              className="block mb-2 text-sm font-medium text-gray-100 dark:text-white"
+              className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
             >
               Confirm password
             </label>
@@ -160,14 +160,14 @@ export const SignUp = ({ toggleSignUp }) => {
           </button>
         </form>
         <p
-          className="text-white dark:text-gray-200 cursor-pointer opacity-70 hover:underline "
+          className="text-black dark:text-gray-200 cursor-pointer opacity-70 hover:underline "
           onClick={toggleSignUp}
         >
           Alerady have an account
         </p>
         <Link
           to="/"
-          className="text-white dark:text-gray-200 hover:underline text-sm opacity-50"
+          className="text-black dark:text-gray-200 hover:underline text-sm opacity-50"
         >
           Back to home
         </Link>

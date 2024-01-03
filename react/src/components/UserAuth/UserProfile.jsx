@@ -54,21 +54,21 @@ export const UserProfile = ({ toggleSignUp }) => {
       },
     });
   return (
-    <div className="h-screen absolute w-screen top-0 bg-transparent backdrop-blur-xl z-50 flex flex-col justify-center items-center gap-2">
+    <div className="h-screen absolute w-screen top-0 dark:bg-black primary-color z-50 flex flex-col justify-center items-center gap-2">
       {isLoading && (
         <div className="absolute top-0 h-screen w-screen">
           <Loading />
         </div>
       )}
       <Toaster />
-      <h1 className="text-white dark:text-gray-100 text-3xl montserrat">
+      <h1 className="text-black dark:text-gray-100 text-3xl montserrat">
         PROFILE
       </h1>
       <form className="md:w-1/3 w-11/12" onSubmit={handleSubmit}>
         <div className="mb-5">
           <label
             htmlFor="email"
-            className="block mb-2 text-sm font-medium text-gray-100 dark:text-white"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Your email
           </label>
@@ -92,7 +92,7 @@ export const UserProfile = ({ toggleSignUp }) => {
         <div className="mb-5">
           <label
             htmlFor="name"
-            className="block mb-2 text-sm font-medium text-gray-100 dark:text-white"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
           >
             Your name
           </label>
@@ -118,7 +118,7 @@ export const UserProfile = ({ toggleSignUp }) => {
             <div className="mb-5 w-1/2">
               <label
                 htmlFor="password"
-                className="block mb-2 text-sm font-medium text-gray-100 dark:text-white"
+                className="block mb-2 text-sm font-medium text-gray-1=900 dark:text-white"
               >
                 Your password
               </label>
@@ -141,7 +141,7 @@ export const UserProfile = ({ toggleSignUp }) => {
             <div className="mb-5 w-1/2">
               <label
                 htmlFor="ConfirmPassword"
-                className="block mb-2 text-sm font-medium text-gray-100 dark:text-white"
+                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
               >
                 Confirm password
               </label>
@@ -170,10 +170,10 @@ export const UserProfile = ({ toggleSignUp }) => {
           </div>
         )}
       </form>
-      <button onClick={handleEditing} className="text-white dark:text-white">
+      <button onClick={handleEditing} className="text-black dark:text-white">
         {!isEditing ? "Update Your Details" : "Exit edit mode"}
       </button>
-      <Link to="/" className="dark:text-white text-white hover:underline text-sm opacity-50">
+      <Link to="/" className="dark:text-white text-black hover:underline text-sm opacity-50">
         Back to home
       </Link>
     </div>

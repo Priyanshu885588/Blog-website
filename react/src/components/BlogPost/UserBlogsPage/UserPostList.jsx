@@ -39,7 +39,7 @@ export const UserPostList = () => {
   useEffect(() => {
     if (data && data.userPosts) {
       try {
-        const sortedPosts = data.userPosts.slice(); // Create a copy of the array
+        const sortedPosts = data.userPosts.slice();
         sortedPosts.sort((a, b) => {
           const dateA = new Date(a.updatedAt);
           const dateB = new Date(b.updatedAt);
@@ -74,7 +74,7 @@ export const UserPostList = () => {
   }
   if (isLoading) {
     return (
-      <div className="h-full w-screen">
+      <div className="h-full w-full">
         <Loading />
       </div>
     );

@@ -36,7 +36,7 @@ export const Dropdown = ({ userInfo }) => {
       <div className="relative flex justify-center items-center">
         <div
           id="dropdownHoverButton"
-          className={`text-black cursor-pointer overflow-hidden quicksand w-20 flex h-8 justify-center items-center gap-1 hover:text-gray-400 font-medium capitalize text-base text-center`}
+          className={`text-white dark:text-black cursor-pointer overflow-hidden quicksand w-20 flex h-8 justify-center items-center gap-1 hover:text-gray-400 font-medium capitalize text-base text-center`}
           onClick={dropdownChange}
         >
           {`${userInfo.name} `}
@@ -44,13 +44,13 @@ export const Dropdown = ({ userInfo }) => {
 
         <div
           id="dropdownHover"
-          className={`absolute md:top-16 bg-white top-10 ${dropdown} border-2 w-36 capitalize lato`}
+          className={`absolute md:top-16 dark:bg-white bg-gray-800 top-10 ${dropdown} w-24 border-2 md:w-36 capitalize lato`}
         >
-          <ul className="py-2 text-sm text-gray-700 w-full dark:text-gray-200">
+          <ul className="py-2 text-sm text-gray-100 w-full dark:text-gray-200">
             <li>
               <Link
                 to="/profile"
-                className="block w-full px-4 py-2 text-black hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer text-center"
+                className="block w-full px-4 py-2 text-white dark:text-black hover:bg-black dark:hover:bg-gray-600 dark:hover:text-white cursor-pointer text-center"
               >
                 Profile
               </Link>
@@ -58,14 +58,14 @@ export const Dropdown = ({ userInfo }) => {
             <li>
               <button
                 onClick={logoutHandler}
-                className="block px-4 py-2 text-black w-full cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 dark:hover:text-white text-center"
+                className="block px-4 py-2 text-white w-full dark:text-black cursor-pointer hover:bg-black dark:hover:bg-gray-600 dark:hover:text-white text-center"
               >
                 Log out
               </button>
             </li>
           </ul>
-          <div className="py-2">
-            <p className="flex justify-center items-center px-4 py-2 text-sm text-gray-900 dark:text-gray-800 border-t border-gray-300">
+          <div className="p-2">
+            <p className="flex justify-center items-center px-4 py-2 text-sm text-gray-100 dark:text-gray-800 border-t border-gray-300 overflow-hidden">
               {userInfo.name}
             </p>
           </div>
