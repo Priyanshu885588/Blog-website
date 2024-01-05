@@ -7,22 +7,42 @@ import { Link } from "react-router-dom";
 import { useGetUserPostsQuery } from "../../../slices/usersApiSlice";
 import { selectUserInfo } from "../../../slices/authSlice";
 import { useSelector } from "react-redux";
+import { deletePost } from "../../services/Api";
 
 export const UserPostList = () => {
   const [posts, setPosts] = useState([]);
   const [singlePost, setSinglePost] = useState({});
   const [singleBlog, setSingleBlog] = useState(false);
+  const [loading, setLoading] = useState(false);
   const userInfo = useSelector(selectUserInfo);
-  const { data, isLoading, isError, refetch } = useGetUserPostsQuery(userInfo._id, {
-    skip: !userInfo._id,
-  });
+  const { data, isLoading, isError, refetch } = useGetUserPostsQuery(
+    userInfo._id,
+    {
+      skip: !userInfo?._id,
+    }
+  );
+
+  const performDeletePost = async (postId) => {
+    try {
+      setLoading(true);
+      await deletePost({
+        postId: postId,
+        token: userInfo.token,
+      });
+      setPosts((prevPosts) => prevPosts.filter((post) => post._id !== postId));
+    } catch (error) {
+      toast.error("Error");
+    } finally {
+      window.location.reload();
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     if (userInfo._id) {
-      // Fetch user posts when the component is mounted
       refetch();
     }
-  }, [userInfo._id, refetch]);
+  }, [userInfo?._id, refetch]);
 
   const handleSingleblog = async (post_id) => {
     try {
@@ -37,7 +57,7 @@ export const UserPostList = () => {
   };
 
   useEffect(() => {
-    if (data && data.userPosts) {
+    if (data) {
       try {
         const sortedPosts = data.userPosts.slice();
         sortedPosts.sort((a, b) => {
@@ -55,7 +75,6 @@ export const UserPostList = () => {
       }
     }
   }, [data]);
-  
 
   if (isError) {
     return (
@@ -72,7 +91,7 @@ export const UserPostList = () => {
       </div>
     );
   }
-  if (isLoading) {
+  if (isLoading || loading) {
     return (
       <div className="h-full w-full">
         <Loading />
@@ -94,6 +113,7 @@ export const UserPostList = () => {
               key={post._id}
               handleSingleblog={handleSingleblog}
               userInfo={userInfo}
+              performDeletePost={performDeletePost}
             />
           ))}
         </div>

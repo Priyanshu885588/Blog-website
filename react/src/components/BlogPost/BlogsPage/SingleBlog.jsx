@@ -16,7 +16,7 @@ export const SingleBlog = ({ singlePost, handleSingleblog }) => {
   return (
     <div
       key={singlePost._id}
-      className="dark:bg-black primary-color text-3xl absolute w-full min-h-screen entry-animation1 top-0 flex flex-col gap-3 justify-start items-center z-50"
+      className="dark:bg-black primary-color text-3xl absolute w-full min-h-screen top-0 flex flex-col gap-3 justify-start items-center z-50 entry-animation1 "
     >
       <p
         className=" text-gray-900 dark:text-gray-200 cursor-pointer hover:text-gray-700 hover:dark:text-white text-4xl "

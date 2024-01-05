@@ -13,7 +13,7 @@ export const HorizontalNavbar = () => {
   const { userInfo } = useSelector((state) => state.auth);
 
   return (
-    <div className="w-screen dark:bg-black primary-color z-50 border-b h-10 border-black dark:border-white md:h-16 sticky top-0 mb-2 flex justify-center items-center">
+    <div className="w-screen dark:bg-black primary-color z-50 border-b h-10 border-black dark:border-white md:h-16 sticky top-0 flex justify-center items-center">
       <div className="w-full md:w-5/6 flex justify-between  items-center h-full md:h-full text-white ">
         <div className="gap-4 b h-full hidden md:flex md:w-48 p-2 justify-center items-center">
           <DarkModeToggle />
@@ -116,7 +116,7 @@ export const HorizontalNavbar = () => {
             <>
               <Link
                 to="/SignIn"
-                className="quicksand hover:text-gray-500 dark:bg-gray-100 bg-black text-white dark:text-black"
+                className="quicksand hover:text-gray-500 dark:bg-gray-100 text-white dark:text-black"
               >
                 Sign In
               </Link>

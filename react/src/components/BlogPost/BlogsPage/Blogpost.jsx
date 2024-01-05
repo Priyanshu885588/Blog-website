@@ -8,7 +8,7 @@ export const Blogpost = ({ post, handleSingleblog, userInfo }) => {
       <div
         onClick={() => handleSingleblog(post._id)}
         key={post._id} // Assuming each post has a unique identifier like 'id'
-        className="w-11/12 md:w-[50rem] p-6 bg-transparent backdrop-blur-3xl rounded-2xl md:h-64 shadow-gray-400   hover:opacity-50 cursor-pointer transition-all duration-200 ease-in-out flex flex-col justify-center items-center gap-2 relative z-20"
+        className="w-11/12 md:w-[50rem] p-6  rounded-2xl md:h-64 shadow-gray-400   hover:opacity-50 cursor-pointer transition-all duration-200 ease-in-out flex flex-col justify-center items-center gap-2 relative z-20"
       >
         <h5
           id="title"

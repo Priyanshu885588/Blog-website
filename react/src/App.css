@@ -22,18 +22,6 @@ div {
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.482);
 }
 
-.entry-animation {
-  animation: entry 1s;
-}
-@keyframes entry {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 100;
-  }
-}
-
 .z-51 {
   z-index: 51;
 }
@@ -43,17 +31,15 @@ div {
 }
 
 .entry-animation1 {
-  animation: entry1 0.3s;
+  animation: entry1 0.5s;
 }
 
 @keyframes entry1 {
   0% {
-    width: 0;
-    margin-left: 50%; /* Start from the center */
+    left: -100%;
   }
   100% {
-    width: 100%;
-    margin-left: 0%; /* Start from the center */
+    left: 0;
   }
 }
 
