@@ -166,6 +166,7 @@ const searchPosts = async (req, res) => {
       $or: [
         { title: { $regex: new RegExp(query, "i") } },
         { tags: { $regex: new RegExp(query, "i") } },
+        { author: { $regex: new RegExp(query, "i") } },
       ],
     });
 

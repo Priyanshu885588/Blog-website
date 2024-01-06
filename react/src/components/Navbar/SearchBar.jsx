@@ -1,6 +1,7 @@
 import React from "react";
 import { searchPosts } from "../services/Api";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export const SearchBar = () => {
   const [searchResults, setSearchResults] = useState();
@@ -57,15 +58,17 @@ export const SearchBar = () => {
         <div className="w-full min-h-[100px] absolute flex flex-col justify-center items-center gap-2 bg-white dark:bg-gray-300 rounded-lg top-10 md:top-16 text-sm text-black p-3">
           {searchResults && searchResults.results.length > 0 ? (
             searchResults.results.map((post) => (
-              <div
+              <Link
+                to={`/searched-blogs/${post._id}`}
                 key={post._id}
                 className="border w-full p-2 flex flex-col gap-1 border-gray-400 cursor-pointer hover:bg-gray-200 hover:dark:bg-gray-100 rounded-xl transition-all duration-200"
+                onClick={() => setSearchBox((prev) => !prev)}
               >
                 <h6 className="playfair">{post.title}</h6>
                 <p className="pl-1 border-l w-fit text-xs border-black capitalize nunito">
                   {post.tags}
                 </p>
-              </div>
+              </Link>
             ))
           ) : isLoading ? (
             <div aria-label="Loading..." role="status">
