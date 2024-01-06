@@ -96,3 +96,13 @@ export const getTopLikedPosts = async () => {
     throw error; // Rethrow the error to propagate it to the caller if needed
   }
 };
+
+export const searchPosts = async (query) => {
+  try {
+    const response = await axios.get(`${API_URL}/search?query=${query}`);
+    return response.data;
+  } catch (error) {
+    console.error("Error searching posts:", error);
+    throw error;
+  }
+};

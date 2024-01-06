@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Dropdown } from "./Dropdown";
+import { SearchBar } from "./SearchBar";
 
 export const HorizontalNavbar = () => {
   const [triggerBar, setTriggerBar] = useState(false);
@@ -14,42 +15,11 @@ export const HorizontalNavbar = () => {
 
   return (
     <div className="w-screen dark:bg-black primary-color z-50 border-b h-10 border-black dark:border-white md:h-16 sticky top-0 flex justify-center items-center">
-      <div className="w-full md:w-5/6 flex justify-between  items-center h-full md:h-full text-white ">
+      <div className="w-full flex justify-between gap-2 items-center h-full md:h-full text-white ">
         <div className="gap-4 b h-full hidden md:flex md:w-48 p-2 justify-center items-center">
           <DarkModeToggle />
         </div>
-        <div className="md:h-full md:bg-transparent md:flex justify-evenly items-center md:w-full quicksand w-32 md:static md:flex-row flex-col hidden">
-          <div className="md:h-full md:bg-transparent md:flex justify-evenly items-center md:w-1/2 quicksand w-32 md:static md:flex-row flex-col hidden">
-            <Link
-              to="/"
-              className="dark:text-white hover:text-gray-600 hover:dark:text-gray-300 text-black w-full text-xl md:text-lg text-center"
-            >
-              Home
-            </Link>
-            <Link
-              to="/blogs"
-              className="dark:text-white hover:text-gray-600 hover:dark:text-gray-300 text-black ack w-full text-xl md:text-lg text-center"
-            >
-              Blogs
-            </Link>
-          </div>
-
-          <div className="md:h-full md:bg-transparent md:flex justify-evenly items-center md:w-1/2 quicksand md:static md:flex-row flex-col hidden">
-            <Link
-              to="/add-blog"
-              className="dark:text-white hover:text-gray-600 hover:dark:text-gray-300 text-black w-full text-xl md:text-lg text-center"
-            >
-              Add blogs
-            </Link>
-            <Link
-              to="/userblogs"
-              className="dark:text-white hover:text-gray-600 hover:dark:text-gray-300 text-black w-full text-xl md:text-lg text-center"
-            >
-              Your blogs
-            </Link>
-          </div>
-        </div>
-        <div className="md:hidden w-full flex justify-start ml-1 items-center">
+        <div className="md:hidden w-fit flex justify-start ml-1 items-center">
           <button
             onClick={handleTriggerBar}
             type="button"
@@ -73,7 +43,7 @@ export const HorizontalNavbar = () => {
           </button>
           {triggerBar && (
             <div className="">
-              <div className="flex flex-col gap-3 absolute dark:bg-gray-900 primary-color top-10 left-0 w-full quicksand p-5">
+              <div className="flex flex-col gap-3 absolute dark:bg-gray-900 bg-white primary-color rounded-b-full top-10 left-0 w-full quicksand p-5">
                 <Link
                   to="/"
                   onClick={handleTriggerBar}
@@ -107,6 +77,40 @@ export const HorizontalNavbar = () => {
             </div>
           )}
         </div>
+
+        <SearchBar />
+
+        <div className="md:h-full md:bg-transparent md:flex justify-evenly items-center md:w-full quicksand w-32 md:static md:flex-row flex-col hidden">
+          <div className="md:h-full md:bg-transparent md:flex justify-evenly items-center md:w-1/2 quicksand w-32 md:static md:flex-row flex-col hidden">
+            <Link
+              to="/"
+              className="dark:text-white hover:text-gray-600 hover:dark:text-gray-300 text-black w-full text-xl md:text-lg text-center"
+            >
+              Home
+            </Link>
+            <Link
+              to="/blogs"
+              className="dark:text-white hover:text-gray-600 hover:dark:text-gray-300 text-black ack w-full text-xl md:text-lg text-center"
+            >
+              Blogs
+            </Link>
+          </div>
+          <div className="md:h-full md:bg-transparent md:flex justify-evenly items-center md:w-1/2 quicksand md:static md:flex-row flex-col hidden">
+            <Link
+              to="/add-blog"
+              className="dark:text-white hover:text-gray-600 hover:dark:text-gray-300 text-black w-full text-xl md:text-lg text-center"
+            >
+              Add blogs
+            </Link>
+            <Link
+              to="/userblogs"
+              className="dark:text-white hover:text-gray-600 hover:dark:text-gray-300 text-black w-full text-xl md:text-lg text-center"
+            >
+              Your blogs
+            </Link>
+          </div>
+        </div>
+
         <div className="border-l h-full md:w-48 relative overflow-visible w-32 dark:bg-gray-100 bg-gray-800 text-white dark:text-white flex justify-center items-center p-2 gap-4 text-lg">
           {userInfo ? (
             <>
