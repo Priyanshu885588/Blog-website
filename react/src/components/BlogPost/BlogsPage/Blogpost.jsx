@@ -4,7 +4,7 @@ import { Likes } from "./Likes";
 
 export const Blogpost = ({ post, handleSingleblog, userInfo }) => {
   return (
-    <div className="flex flex-col justify-center items-center border-b pb-2 w-full border-black">
+    <div className="flex flex-col justify-center items-center border-b pb-2 w-full border-black dark:border-gray-800">
       <div
         onClick={() => handleSingleblog(post._id)}
         key={post._id} // Assuming each post has a unique identifier like 'id'

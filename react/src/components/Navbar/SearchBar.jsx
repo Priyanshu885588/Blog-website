@@ -55,7 +55,7 @@ export const SearchBar = () => {
         />
       </div>
       {searchBox && (
-        <div className="w-full min-h-[100px] absolute flex flex-col justify-center items-center gap-2 bg-white dark:bg-gray-300 rounded-lg top-10 md:top-16 text-sm text-black p-3">
+        <div className="w-full overflow-auto max-h-72 absolute flex flex-col justify-start items-center gap-2 bg-white dark:bg-gray-300 rounded-b-xl top-10 md:top-16 text-sm text-black p-3">
           {searchResults && searchResults.results.length > 0 ? (
             searchResults.results.map((post) => (
               <Link

@@ -63,7 +63,7 @@ export const BlogPostForm = () => {
         to="/"
         className="absolute top-2 left-2 dark:text-white hover:text-gray-900 hover:dark:text-gray-900 text-black text-xl md:text-lg"
       >
-        <div className="rounded-full border-2 border-black">
+        <div className="rounded-full border-2 border-black dark:bg-white">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="24"

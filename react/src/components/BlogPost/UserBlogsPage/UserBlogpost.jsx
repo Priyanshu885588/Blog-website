@@ -11,7 +11,7 @@ export const UserBlogpost = ({
   performDeletePost,
 }) => {
   return (
-    <div className="flex flex-col justify-center items-center border-b pb-2 w-full border-black">
+    <div className="flex flex-col justify-center items-center border-b pb-2 w-full border-black dark:border-gray-800">
       <Toaster />
       <div
         onClick={() => handleSingleblog(post._id)}
