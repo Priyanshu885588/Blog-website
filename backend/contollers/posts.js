@@ -158,6 +158,24 @@ const getTopLikedPosts = async (req, res) => {
   }
 };
 
+const searchPosts = async (req, res) => {
+  try {
+    const { query } = req.query;
+
+    const results = await Post.find({
+      $or: [
+        { title: { $regex: new RegExp(query, "i") } },
+        { tags: { $regex: new RegExp(query, "i") } },
+      ],
+    });
+
+    res.status(200).json({ results });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ msg: "Server error" });
+  }
+};
+
 module.exports = {
   getAllPosts,
   getSinglePost,
@@ -169,4 +187,5 @@ module.exports = {
   createComment,
   getComments,
   getTopLikedPosts,
+  searchPosts,
 };
