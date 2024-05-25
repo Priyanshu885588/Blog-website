@@ -17,6 +17,7 @@ export const SearchBar = () => {
       if (event.target.value) {
         const results = await searchPosts(event.target.value);
         setSearchResults(results);
+        console.log(results);
       } else {
         setSearchBox(false);
       }
@@ -29,7 +30,7 @@ export const SearchBar = () => {
   };
 
   return (
-    <div className="w-full relative flex flex-col h-full justify-center">
+    <div className="w-full flex flex-col h-full justify-center">
       <div className="w-full flex gap-2 items-center md:h-2/3 h-5/6 p-2 rounded-full border bg-transparent dark:border-gray-50 border-gray-800">
         <svg
           className="w-4 h-4 text-gray-900 dark:text-gray-400"
@@ -55,7 +56,7 @@ export const SearchBar = () => {
         />
       </div>
       {searchBox && (
-        <div className="w-full overflow-auto max-h-72 absolute flex flex-col justify-start items-center gap-2 bg-white dark:bg-gray-300 rounded-b-xl top-10 md:top-16 text-sm text-black p-3">
+        <div className="md:w-full overflow-auto max-h-72 absolute w-screen flex flex-col justify-start items-center gap-2 bg-white dark:bg-gray-300 rounded-b-xl top-10 md:top-16 md:left-0 left-0 text-sm text-black p-3">
           {searchResults && searchResults.results.length > 0 ? (
             searchResults.results.map((post) => (
               <Link
@@ -66,7 +67,10 @@ export const SearchBar = () => {
               >
                 <h6 className="playfair">{post.title}</h6>
                 <p className="pl-1 border-l w-fit text-xs border-black capitalize nunito">
-                  {post.tags}
+                  {post.author}
+                </p>
+                <p className="p-1 w-fit text-xs border-black capitalize nunito opacity-80">
+                  #{post.tags}
                 </p>
               </Link>
             ))

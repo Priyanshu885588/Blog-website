@@ -86,34 +86,6 @@ export const CommentBox = ({
               Comment Section
             </p>
           </div>
-
-          <div className="w-full overflow-auto h-full flex flex-col items-start">
-            {isLoading ? (
-              <div className="w-full h-full">
-                <Loading />
-              </div>
-            ) : (
-              comments.map((comment) => (
-                <article
-                  key={comment._id} // Use a unique key for each comment
-                  className="p-6 text-base bg-gray-100 border-t border-gray-200 w-full dark:border-gray-700 dark:bg-gray-700"
-                >
-                  <footer className="flex justify-between items-center mb-2">
-                    <p className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
-                      {comment.user.name}
-                    </p>
-                    <p className="text-xs text-gray-600 dark:text-gray-400">
-                      <time>{comment.createdAt.substring(0, 10)}</time>
-                    </p>
-                  </footer>
-                  <p className="text-gray-500 text-left text-xs md:text-sm dark:text-gray-400">
-                    {comment.content}
-                  </p>
-                </article>
-              ))
-            )}
-          </div>
-
           <form
             method="POST"
             className="w-full flex gap-1 justify-center items-center"
@@ -151,6 +123,32 @@ export const CommentBox = ({
               </svg>
             </button>
           </form>
+          <div className="w-full overflow-auto h-full flex flex-col items-start">
+            {isLoading ? (
+              <div className="w-full h-full">
+                <Loading />
+              </div>
+            ) : (
+              comments.map((comment) => (
+                <article
+                  key={comment._id} // Use a unique key for each comment
+                  className="p-6 text-base bg-gray-100 border-t border-gray-200 w-full dark:border-gray-700 dark:bg-gray-700"
+                >
+                  <footer className="flex justify-between items-center mb-2">
+                    <p className="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold">
+                      {comment.user.name}
+                    </p>
+                    <p className="text-xs text-gray-600 dark:text-gray-400">
+                      <time>{comment.createdAt.substring(0, 10)}</time>
+                    </p>
+                  </footer>
+                  <p className="text-gray-500 text-left text-xs md:text-sm dark:text-gray-400">
+                    {comment.content}
+                  </p>
+                </article>
+              ))
+            )}
+          </div>
         </div>
       </div>
       <Toaster />

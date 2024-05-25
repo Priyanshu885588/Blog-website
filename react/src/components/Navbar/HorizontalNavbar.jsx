@@ -43,32 +43,32 @@ export const HorizontalNavbar = () => {
           </button>
           {triggerBar && (
             <div className="">
-              <div className="flex flex-col gap-3 absolute dark:bg-gray-900 bg-white primary-color rounded-b-full top-10 left-0 w-full quicksand p-5">
+              <div className="flex flex-col gap-3 absolute bg-gray-900 primary-color  top-10 left-0 w-full quicksand p-5">
                 <Link
                   to="/"
                   onClick={handleTriggerBar}
-                  className="dark:text-white hover:text-gray-400 hover:dark:text-gray-300 text-black w-full text-xl md:text-lg text-center"
+                  className="dark:text-white hover:text-gray-400 hover:dark:text-gray-300  w-full text-xl md:text-lg text-center"
                 >
                   Home
                 </Link>
                 <Link
                   to="/blogs"
                   onClick={handleTriggerBar}
-                  className="dark:text-white hover:text-gray-400 hover:dark:text-gray-300 text-black ack w-full text-xl md:text-lg text-center"
+                  className="dark:text-white hover:text-gray-400 hover:dark:text-gray-300  ack w-full text-xl md:text-lg text-center"
                 >
                   Blogs
                 </Link>
                 <Link
                   to="/add-blog"
                   onClick={handleTriggerBar}
-                  className="dark:text-white hover:text-gray-400 hover:dark:text-gray-300 text-black w-full text-xl md:text-lg text-center"
+                  className="dark:text-white hover:text-gray-400 hover:dark:text-gray-300  w-full text-xl md:text-lg text-center"
                 >
                   Add blogs
                 </Link>
                 <Link
                   to="/userblogs"
                   onClick={handleTriggerBar}
-                  className="dark:text-white hover:text-gray-400 hover:dark:text-gray-300 text-black w-full text-xl md:text-lg text-center"
+                  className="dark:text-white hover:text-gray-400 hover:dark:text-gray-300  w-full text-xl md:text-lg text-center"
                 >
                   Your blogs
                 </Link>
